@@ -1,13 +1,9 @@
 ﻿//using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-
 
 public class GridTile : MonoBehaviour
 {
-
-
     public TileKey Key;
     private Color MyColor;
     public UpgradeBase Upgrade;
@@ -235,11 +231,7 @@ public class GridTile : MonoBehaviour
         float _growthRate = 1;
         foreach (var item in SurroundingTiles)
         {
-            if (item.Value.UpgradeType == UpgradeTypes.water || item.Value.UpgradeType == UpgradeTypes.irrigation)
-            {
-                _growthRate *= 2;
-                break;
-            }
+            
         }
 
         return _growthRate;

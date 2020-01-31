@@ -121,42 +121,19 @@ public enum TileMovementTypes
 public enum UpgradeTypes
 {
     nil,
+
+    dirt,
+
     grass,
+
     tree,
-    storage,
-    growingTree,
-    growingWheat,
-    wheat,
-    plantTree,
-    plantWheat,
-    constructBridge,
-    bridge,
-    stone,
-    firePlace,
-    buildFirePlace,
-    water,
-    irrigation,
-    buildIrrigation
+   
+    home,
+
+    windmill,
 
 }
 
-public enum ResourceTypes
-{
-    nil,
-    lumber,
-    stone,
-    wheat,
-    treeSeed,
-    wheatSeed
-}
-
-public enum TaskStates
-{
-    nil,
-    movingTo,
-    working,
-    idle
-}
 
 
 [System.Serializable]
@@ -176,16 +153,6 @@ public class Types : Singleton<Types>
   
     public UpgradeDescriptions[] UpgradeDescriptions;
 
-
-    public float GetWorkDistanceForUpgrade(UpgradeTypes type)
-    {
-        if (type == UpgradeTypes.constructBridge)
-        {
-            return 1.1f;
-        }
-
-        return 0.2f;
-    }
 
     public string GetUpgradeDescription(UpgradeTypes type)
     {

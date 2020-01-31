@@ -17,10 +17,8 @@ public class ObjectPool : Singleton<ObjectPool>
             for (int _count = 0; _count < 5; _count++)
             {
                 AddUpgradeToDictionay(Instantiate(UpgradePrefabs[i]));
-
             }
         }
-
     }
     private void AddUpgradeToDictionay(UpgradeBase upgrade)
     {
