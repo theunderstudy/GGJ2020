@@ -21,30 +21,30 @@ public class UI_Subtitle_Controller : MonoBehaviour
     [SerializeField] private float currentDisplayTime;
 
     //Component Refrences
-    private Text uiText;
-    private Outline textOutline;
-
-    private void Awake()
-    {
-        textOutline = GetComponentInChildren<Outline>();
-        uiText = transform.GetComponentInChildren<Text>();
-    }
+    private Text UiText { get { return transform.GetComponent<Text>(); } }
+    private Outline TextOutline { get { return transform.GetComponent<Outline>(); } }
 
     private void OnEnable()
     {
-        SetSubtitleStyle();
+        Subtitle_Manager.DisplaySubtitle += UpdateText;
         UITextClear();
+    }
+
+    private void OnDestroy()
+    {
+        Subtitle_Manager.DisplaySubtitle -= UpdateText;
     }
 
     //Sets the Subtitle Style.
     public void SetSubtitleStyle()
     {
         namecolHex = ColorUtility.ToHtmlStringRGB(SubtitleStyle.NameColour);
-        uiText.font = SubtitleStyle.fontSyle;
+        UiText.font = SubtitleStyle.fontSyle;
         dialogcolHex = ColorUtility.ToHtmlStringRGB(SubtitleStyle.TextColour);
-        textOutline.effectColor = SubtitleStyle.OutlineColour;
-        textOutline.effectDistance = new Vector2(SubtitleStyle.OutLineSize, -SubtitleStyle.OutLineSize);
-        uiText.fontSize = SubtitleStyle.SubtitleSize;
+        TextOutline.effectColor = SubtitleStyle.OutlineColour;
+        TextOutline.effectDistance = new Vector2(SubtitleStyle.OutLineSize, -SubtitleStyle.OutLineSize);
+        UiText.fontSize = SubtitleStyle.SubtitleSize;
+
         if (debugActive) //Debug display of subtitle settings
         {
             Debug.LogFormat("Name Colour is {0} " +
@@ -54,16 +54,16 @@ public class UI_Subtitle_Controller : MonoBehaviour
                             "Font Size is: {4} ",
                             namecolHex.ToString(),
                             dialogcolHex.ToString(),
-                            textOutline.effectColor.ToString(),
-                            textOutline.effectDistance.ToString(),
-                            uiText.fontSize.ToString());
+                            TextOutline.effectColor.ToString(),
+                            TextOutline.effectDistance.ToString(),
+                            UiText.fontSize.ToString());
         }
     }
 
     //Clears the text fields
     private void UITextClear()
     {
-        uiText.text = "";
+        UiText.text = "";
         subtitle = "";
     }
 
@@ -72,14 +72,15 @@ public class UI_Subtitle_Controller : MonoBehaviour
     /// </summary>
     /// <param name="name">Name of the Speaking Character</param>
     /// <param name="dialog">Dialog of the speaking Character</param>
-    public void UpdateText(string name, string dialog)
+    public void UpdateText(Color nameColor, string name, string dialog)
     {
         subtitle = string.Format("<color=#{0}><b>{1}</b></color>: <color=#{2}>{3}</color>",
-                                    namecolHex,
+                                    namecolHex = ColorUtility.ToHtmlStringRGB(nameColor),
                                     name,
                                     dialogcolHex,
                                     dialog);
-        uiText.text = subtitle;
+
+        UiText.text = subtitle;
         currentDisplayTime = 0;
     }
 
@@ -112,5 +113,6 @@ public class UI_Subtitle_Controller : MonoBehaviour
     {
         TextTimeOut();
     }
+
 }
 

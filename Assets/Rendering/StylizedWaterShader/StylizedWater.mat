@@ -5,11 +5,12 @@ Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: StylizedWater
   m_Shader: {fileID: 4800000, guid: 4a91c9577c91733478297518e0cb57ed, type: 3}
   m_ShaderKeywords: _SECONDARYFOAMALWAYSVISIBLE_ON _SHADOWS_ON
-  m_LightmapFlags: 0
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -44,40 +45,40 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Cutoff: 0.5
-    - _FresnelExp: 5
-    - _GradientPosition1: 2.3328786
-    - _GradientPosition2: 2.5
-    - _LightColorIntensity: 1
-    - _MainFoamIntensity: 4
-    - _MainFoamOpacity: 1
-    - _MainFoamScale: 80
-    - _MainFoamSpeed: 0.2
-    - _Opacity: 0.33
-    - _OpacityDepth: 2.9
+    - _FresnelExp: 1.0714285
+    - _GradientPosition1: 4.9392614
+    - _GradientPosition2: 11.071144
+    - _LightColorIntensity: 0.458
+    - _MainFoamIntensity: 2.2
+    - _MainFoamOpacity: 0.463
+    - _MainFoamScale: 22.88
+    - _MainFoamSpeed: 0.56
+    - _Opacity: 0.22
+    - _OpacityDepth: 1.78
     - _RealTimeReflection: 1
-    - _ReflectionsIntensity: 1.33
+    - _ReflectionsIntensity: 2.13
     - _RefractionIntensity: 1.71
-    - _Roughness: 0.316
+    - _Roughness: 0.206
     - _SecondaryFoamAlwaysVisible: 0
-    - _SecondaryFoamIntensity: 3.8
-    - _SecondaryFoamOpacity: 1
-    - _SecondaryFoamScale: 57.01
+    - _SecondaryFoamIntensity: 50.4
+    - _SecondaryFoamOpacity: 0.164
+    - _SecondaryFoamScale: 35.5
     - _ShadowIntensity: 1
     - _Shadows: 1
     - _ShadowsIntensity: 1
-    - _SpecularIntensity: 0.819
+    - _SpecularIntensity: 0.336
     - _TurbulenceDistortionIntesity: 0.73
     - _TurbulenceScale: 15.53
     - _VertexOffset: 0
-    - _WaveDistortionIntensity: 0.59
+    - _WaveDistortionIntensity: 1.97
     - _WavesAmplitude: 3.74
-    - _WavesDirection: 77
-    - _WavesIntensity: 1.97
-    - _WavesSpeed: 1
+    - _WavesDirection: 26
+    - _WavesIntensity: 2.39
+    - _WavesSpeed: 1.6
     m_Colors:
-    - _DepthGradient1: {r: 0.4156863, g: 0.6392157, b: 0.9058824, a: 1}
-    - _DepthGradient2: {r: 0, g: 0.15466529, b: 0.36764705, a: 1}
-    - _DepthGradient3: {r: 0.017409164, g: 0.04984338, b: 0.16911763, a: 1}
+    - _DepthGradient1: {r: 0.23740657, g: 0.9150943, b: 0.57913226, a: 1}
+    - _DepthGradient2: {r: 0.1541919, g: 0.31132078, b: 0.17663887, a: 1}
+    - _DepthGradient3: {r: 0.019446427, g: 0.1792453, b: 0.096386634, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FresnelColor: {r: 0, g: 0.37931037, b: 1, a: 1}
+    - _FresnelColor: {r: 0.20060521, g: 0.2934615, b: 0.8679245, a: 1}
     - _ShadowColor: {r: 0.009191178, g: 0.033871744, b: 0.125, a: 1}
