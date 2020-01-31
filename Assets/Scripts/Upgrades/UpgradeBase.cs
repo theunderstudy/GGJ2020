@@ -7,7 +7,6 @@ public abstract class UpgradeBase : MonoBehaviour
     public GameObject UpgradeModel;
     public virtual void SetPositioning(Transform parent)
     {
-
         transform.parent = parent;
         transform.localPosition = Vector3.zero;
     }

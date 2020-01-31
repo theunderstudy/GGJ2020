@@ -11,25 +11,25 @@ public class GridManagerEditor : Editor
     {
         DrawDefaultInspector();
         m_GM = (GridManager)target;
-        if (GUILayout.Button("Generate grid"))
-        {
-            m_GM.GenerateGrid();
-        }
+        //if (GUILayout.Button("Generate grid"))
+        //{
+        //    m_GM.GenerateGrid();
+        //}
 
-        if (GUILayout.Button("Clear grid"))
-        {
-            m_GM.ClearGrid();
-        }
+        //if (GUILayout.Button("Clear grid"))
+        //{
+        //    m_GM.ClearGrid();
+        //}
 
         if (GUILayout.Button("Load grid from world"))
         {
             m_GM.LoadGridFromWorld();
         }
 
-        if (GUILayout.Button("Regenerate grid"))
-        {
-            m_GM.RegenerateGrid();
-        }
+        //if (GUILayout.Button("Regenerate grid"))
+        //{
+        //    m_GM.RegenerateGrid();
+        //}
 
 
     }
@@ -175,7 +175,6 @@ public class GridManager : Singleton<GridManager>
             _tile.transform.parent = transform;
             _tile.name = _key.X + " " + _key.Z;
             _tile.Init(_key);
-
             Grid.Add(_key, _tile);
         }
 
@@ -184,8 +183,6 @@ public class GridManager : Singleton<GridManager>
         {
             item.Value.SetSurroundingTiles(this);
         }
-
-        //NavMesh.BuildNavMesh();
 
         Debug.Log(Grid.Count);
     }
