@@ -225,6 +225,7 @@ public class PlayerController : Singleton<PlayerController>
             if (_tile != CurrentTile)
             {
                 CurrentTile = _tile;
+                PlayerMouseinput.Instance.HighlightWorkableTiles();
             }
         }
     }
@@ -234,7 +235,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             return;
         }
-
+        Energy -= 10;
         bWorking = true;
         StartCoroutine(WorkRoutine(workTime));
     }

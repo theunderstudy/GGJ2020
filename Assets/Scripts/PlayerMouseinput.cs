@@ -104,7 +104,7 @@ public class PlayerMouseinput : Singleton<PlayerMouseinput>
         return null;
     }
 
-    private void HighlightWorkableTiles()
+    public void HighlightWorkableTiles()
     {
         for (int i = 0; i < GridHighlights.Length; i++)
         {

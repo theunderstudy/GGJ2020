@@ -1,11 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 public class UIManager : Singleton<UIManager>
 {
     public CanvasGroup NightFadeGroup;
     public ImageButton NewDayButton;
+    public Image EnergyFill;
+    private PlayerController Player;
+    private void Start()
+    {
+        Player = PlayerController.Instance;
+    }
 
     public void NightFadeOut(float fadeTime)
     {
@@ -28,5 +35,10 @@ public class UIManager : Singleton<UIManager>
     public void HighlightButton(int buttonIndex)
     {
 
+    }
+
+    private void Update()
+    {
+        EnergyFill.fillAmount =(float) Player.Energy / Player.MaxEnergy;
     }
 }
