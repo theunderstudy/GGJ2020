@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Character_Toon
+  m_Shader: {fileID: 4800000, guid: d38a460006bca42169e31b29d162e446, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MatCapTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SketchTexture:
+        m_Texture: {fileID: 2800000, guid: b1b62855ddf91f140a6b405c3037c38d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecularRamp:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _StylizedThreshold:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _HSV_H: 0
+    - _HSV_S: 0
+    - _HSV_V: 0
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _OutlineWidth: 1.13
+    - _Parallax: 0.02
+    - _RampSmoothing: 0.1
+    - _RampSmoothingOtherLights: 0.5
+    - _RampThreshold: 0.346
+    - _RampThresholdDirectional: 0.787
+    - _RampThresholdOtherLights: 0.88
+    - _RampThresholdPoint: 0.258
+    - _RampThresholdSpot: 0.422
+    - _ReflectionSmoothness: 0.5
+    - _RimMax: 1.38
+    - _RimMaxVert: 1.07
+    - _RimMin: 0.62
+    - _RimMinVert: 0.46
+    - _Shadow_HSV_H: 13
+    - _Shadow_HSV_S: -0.19
+    - _Shadow_HSV_V: -0.12
+    - _SketchMax: 0.987
+    - _SketchMin: 0
+    - _SketchTexture_OffsetSpeed: 120
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SpecularSmoothness: 0.2
+    - _SpecularSmoothnessPBR: 0.442
+    - _SpecularToonBands: 3
+    - _SpecularToonSize: 0.181
+    - _SpecularToonSmoothness: 0.342
+    - _SrcBlend: 1
+    - _SubsurfaceDistortion: 0.2
+    - _SubsurfacePower: 3
+    - _SubsurfaceScale: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    - __BeginGroup_OtherLights: 1
+    - __BeginGroup_ShadowHSV: 1
+    - __EndGroup: 0
+    - __dummy__: 0
+    - __outline_gui_dummy__: 0
+    m_Colors:
+    - _Color: {r: 1, g: 0.4729777, b: 0.4198113, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HColor: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
+    - _MatCapColor: {r: 0.9716981, g: 0.53626734, b: 0.53626734, a: 1}
+    - _OutlineColorVertex: {r: 0, g: 0, b: 0, a: 1}
+    - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.5}
+    - _RimDir: {r: 0, g: 0, b: -0.09, a: 1}
+    - _RimDirVert: {r: 0, g: 0, b: 1, a: 1}
+    - _SColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+    - _SpecularColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _SubsurfaceAmbientColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _SubsurfaceColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _TCP2_AMBIENT_BACK: {r: 0, g: 0, b: 0, a: 1}
+    - _TCP2_AMBIENT_BOTTOM: {r: 0, g: 0, b: 0, a: 1}
+    - _TCP2_AMBIENT_FRONT: {r: 0, g: 0, b: 0, a: 1}
+    - _TCP2_AMBIENT_LEFT: {r: 0, g: 0, b: 0, a: 1}
+    - _TCP2_AMBIENT_RIGHT: {r: 0, g: 0, b: 0, a: 1}
+    - _TCP2_AMBIENT_TOP: {r: 0, g: 0, b: 0, a: 1}

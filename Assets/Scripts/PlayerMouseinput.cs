@@ -21,6 +21,11 @@ public class PlayerMouseinput : Singleton<PlayerMouseinput>
     private void Update()
     {
         CheckPlayerInput();
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            DayNightManager.Instance.StartNewDay();
+        }
     }
 
 

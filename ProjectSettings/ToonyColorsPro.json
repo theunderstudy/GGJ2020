@@ -8,9 +8,6 @@
     "OpenedFoldouts": [
         "LIGHTING",
         "STYLIZATION",
-        "SPECIAL EFFECTS",
-        "TRANSPARENCY/BLENDING",
-        "SHADER STATES",
-        "OPTIONS"
+        "SURFACE"
     ]
 }
