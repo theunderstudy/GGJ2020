@@ -18,4 +18,15 @@ public class WaterUpgrade : UpgradeBase
     {
         ParentTile.EnableRenderers();
     }
+
+    public override void StartNewDay(EWeather newWeather)
+    {
+      
+    }
+
+
+    private void Update()
+    {
+        Vector3 _currentRotation = transform.rotation.eulerAngles;
+    }
 }

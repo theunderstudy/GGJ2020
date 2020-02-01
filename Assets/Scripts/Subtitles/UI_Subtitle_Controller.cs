@@ -44,6 +44,7 @@ public class UI_Subtitle_Controller : MonoBehaviour
         TextOutline.effectColor = SubtitleStyle.OutlineColour;
         TextOutline.effectDistance = new Vector2(SubtitleStyle.OutLineSize, -SubtitleStyle.OutLineSize);
         UiText.fontSize = SubtitleStyle.SubtitleSize;
+        UiText.resizeTextMaxSize = SubtitleStyle.SubtitleSize + 10;
 
         if (debugActive) //Debug display of subtitle settings
         {
