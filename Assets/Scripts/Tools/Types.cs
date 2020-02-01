@@ -158,17 +158,6 @@ public enum TaskStates
     idle
 }
 
-public enum EWeather
-{
-    Thunderstorm,
-    Drizzle,
-    Rain,
-    Snow,
-    Fog,
-    Clear,
-    Clouds
-}
-
 
 [System.Serializable]
 public struct UpgradeDescriptions
