@@ -222,7 +222,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 429454794}
-  - component: {fileID: 429454796}
   - component: {fileID: 429454795}
   m_Layer: 0
   m_Name: Clouds
@@ -258,19 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   condition: 6
---- !u!114 &429454796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 429454793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4838b97feb6154a9bad90459953005, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  condition: 0
+  skybox: {fileID: 2100000, guid: 77715b8b6b248994891d3ccad1ad330b, type: 2}
 --- !u!1 &481299463
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +267,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 481299464}
-  - component: {fileID: 481299466}
   - component: {fileID: 481299465}
   m_Layer: 0
   m_Name: Fog
@@ -316,19 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   condition: 4
---- !u!114 &481299466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481299463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4838b97feb6154a9bad90459953005, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  condition: 0
+  skybox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   condition: 2
+  skybox: {fileID: 2100000, guid: 77715b8b6b248994891d3ccad1ad330b, type: 2}
 --- !u!1 &881297842
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,15 +461,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeather: 4
-  currentWeatherCondition: {fileID: 481299466}
+  currentWeatherCondition: {fileID: 481299465}
   supportedWeatherConditions:
-  - {fileID: 481299466}
-  - {fileID: 429454796}
+  - {fileID: 481299465}
+  - {fileID: 429454795}
   - {fileID: 1322247140}
-  - {fileID: 1106831505}
+  - {fileID: 1106831504}
   - {fileID: 707763052}
-  - {fileID: 1657354104}
-  - {fileID: 1150253809}
+  - {fileID: 1657354103}
+  - {fileID: 1150253808}
 --- !u!4 &881297844
 Transform:
   m_ObjectHideFlags: 0
@@ -525,7 +500,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1106831503}
-  - component: {fileID: 1106831505}
   - component: {fileID: 1106831504}
   m_Layer: 0
   m_Name: Drizzle
@@ -561,19 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   condition: 1
---- !u!114 &1106831505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1106831502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4838b97feb6154a9bad90459953005, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  condition: 0
+  skybox: {fileID: 2100000, guid: 77715b8b6b248994891d3ccad1ad330b, type: 2}
 --- !u!1 &1150253806
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,7 +545,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1150253807}
-  - component: {fileID: 1150253809}
   - component: {fileID: 1150253808}
   m_Layer: 0
   m_Name: Snow
@@ -619,19 +580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   condition: 3
---- !u!114 &1150253809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1150253806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4838b97feb6154a9bad90459953005, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  condition: 0
+  skybox: {fileID: 2100000, guid: 169a1b8f06c17c84e8de491f2bfef986, type: 2}
 --- !u!1 &1322247138
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,6 +625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   condition: 5
+  skybox: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
 --- !u!1 &1657354101
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,7 +635,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1657354102}
-  - component: {fileID: 1657354104}
   - component: {fileID: 1657354103}
   m_Layer: 0
   m_Name: Thunderstorm
@@ -721,16 +670,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   condition: 0
---- !u!114 &1657354104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1657354101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4838b97feb6154a9bad90459953005, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  condition: 0
+  skybox: {fileID: 2100000, guid: ceb0a3ed2cb53a94fa21843cc958c52b, type: 2}

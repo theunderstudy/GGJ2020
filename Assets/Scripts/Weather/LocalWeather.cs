@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using Newtonsoft.Json.Linq;
 
 public class LocalWeather : MonoBehaviour
@@ -26,33 +26,35 @@ public class LocalWeather : MonoBehaviour
             }
         }
         currentWeather = newWeather;
+        RenderSettings.skybox = currentWeatherCondition.skybox;
     }
     IEnumerator GetWeather()
     {
-        WWW _cityRequest = new WWW("https://api.ipdata.co/city?api-key=9b458d7bc15d0035c5564696960d4fedea2533b290e9383f69b06f10");
-        yield return _cityRequest;
+        UnityWebRequest  cityRequest = UnityWebRequest.Get("https://api.ipdata.co/city?api-key=9b458d7bc15d0035c5564696960d4fedea2533b290e9383f69b06f10");
+        yield return cityRequest.SendWebRequest();
 
-        if (_cityRequest.error != null)
+        if (cityRequest.isNetworkError || cityRequest.isHttpError)
         {
-            Debug.Log("City get failed" + _cityRequest.error);
+            Debug.Log("City get failed" + cityRequest.error);
             yield break;
         }
 
-        string _location = _cityRequest.text    ;
-        WWW _weatherRequest = new WWW("http://api.openweathermap.org/data/2.5/weather?q=" + _location + "&APPID=af38440a4558fb5178b658ed3bbddfb0");
-        yield return _weatherRequest;
-        if (_weatherRequest.error == null)
+        string location = cityRequest.downloadHandler.text;
+        UnityWebRequest weatherRequest = UnityWebRequest.Get("http://api.openweathermap.org/data/2.5/weather?q=" + location + "&APPID=af38440a4558fb5178b658ed3bbddfb0");
+        yield return weatherRequest.SendWebRequest();
+        if (weatherRequest.isNetworkError || weatherRequest.isHttpError)
         {
-            // Debug.Log(_weatherRequest.text);
-            dynamic weatherResponse = JObject.Parse(_weatherRequest.text);
+            Debug.Log("Weather get failed " + weatherRequest.error);
+        }
+        else
+        {
+            string weatherResponseRaw = weatherRequest.downloadHandler.text;
+            Debug.Log(weatherResponseRaw);
+            dynamic weatherResponse = JObject.Parse(weatherResponseRaw);
             int weatherCode = (int) weatherResponse["weather"][0]["id"];
             int weatherFamily = (weatherCode - (weatherCode % 100)) / 100 - 2;
             this.SetWeather ((EWeather) weatherFamily);
             Debug.Log(currentWeather);
-        }
-        else
-        {
-            Debug.Log("Weather get failed " +_weatherRequest.error);
         }
     }
 }

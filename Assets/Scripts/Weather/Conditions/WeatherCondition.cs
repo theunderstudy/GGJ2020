@@ -5,6 +5,8 @@ using UnityEngine;
 public class WeatherCondition : MonoBehaviour
 {
     public EWeather condition;
+    public Material skybox;
+
     // Start is called before the first frame update
     void Start()
     {
