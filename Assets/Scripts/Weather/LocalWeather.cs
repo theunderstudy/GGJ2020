@@ -27,6 +27,8 @@ public class LocalWeather : MonoBehaviour
         }
         currentWeather = newWeather;
         RenderSettings.skybox = currentWeatherCondition.skybox;
+
+        currentWeatherCondition.IntializeWeather(Camera.main.transform);
     }
     IEnumerator GetWeather()
     {

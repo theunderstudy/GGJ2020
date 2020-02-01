@@ -6,16 +6,17 @@ public class WeatherCondition : MonoBehaviour
 {
     public EWeather condition;
     public Material skybox;
+    public GameObject[] LoopingGameParticles;
+  
 
-    // Start is called before the first frame update
-    void Start()
+
+    public void IntializeWeather(Transform cameraTransform)
     {
+        for (int i = 0; i < LoopingGameParticles.Length; i++)
+        {
+            LoopingGameParticles[i].transform.parent = cameraTransform;
+            LoopingGameParticles[i].transform.localPosition = Vector3.zero;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
     }
 }
