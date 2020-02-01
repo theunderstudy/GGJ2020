@@ -88,12 +88,12 @@ public class PlayerController : MonoBehaviour
             if (currentEuler != rotationTarget) {
                 // Update the current euler towards the rotation target
 
-                if (currentEuler.y >= 270 && (rotationTarget.y == 0 || rotationTarget.y == 90)) {
+                if (currentEuler.y >= 270 && (rotationTarget.y >= 0 || rotationTarget.y <= 90)) {
                     // If we are over 270 and we're trying to get to 0 or 90,
                     rotationTarget.y += 360.0f;
                 }
 
-                if (currentEuler.y <= 90 && rotationTarget.y == 270) {
+                if (currentEuler.y <= 90 && rotationTarget.y >= 270) {
                     currentEuler.y += 360.0f;
                 }
 
