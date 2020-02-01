@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrassUpgrade : UpgradeBase
+public class WaterUpgrade : UpgradeBase
 {
     public override void ResetUpgrade()
     {
@@ -18,5 +18,4 @@ public class GrassUpgrade : UpgradeBase
     {
         ParentTile.EnableRenderers();
     }
-
 }

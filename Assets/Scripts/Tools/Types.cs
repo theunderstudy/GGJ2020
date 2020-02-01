@@ -127,10 +127,12 @@ public enum UpgradeTypes
     grass,
 
     tree,
-   
+
     home,
 
     windmill,
+
+    water,
 
 }
 
@@ -150,7 +152,7 @@ public class Types : Singleton<Types>
 {
     public static TileKey[] CardinalKeys = new TileKey[4] { TileKey.north, TileKey.east, TileKey.south, TileKey.west };
     public static TileKey[] SurroundingKeys = new TileKey[8] { TileKey.north, TileKey.northEast, TileKey.east, TileKey.southEast, TileKey.south, TileKey.southWest, TileKey.west, TileKey.northWest };
-  
+
     public UpgradeDescriptions[] UpgradeDescriptions;
 
 
@@ -170,4 +172,3 @@ public class Types : Singleton<Types>
         return _return;
     }
 }
-

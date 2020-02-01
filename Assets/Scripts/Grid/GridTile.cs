@@ -1,4 +1,4 @@
-﻿//using DG.Tweening;
+﻿using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -158,9 +158,9 @@ public class GridTile : MonoBehaviour
     }
     public void UpgradeTile(UpgradeBase newUpgrade)
     {
+        // Return existing upgrade
         if (Upgrade != null)
         {
-
             if (Upgrade == newUpgrade)
             {
                 Upgrade.AssignTile(this);
@@ -215,15 +215,15 @@ public class GridTile : MonoBehaviour
 
     public void MoveTileVerticallyOverTime(float newLocalY, float duration)
     {
-      //  DOTween.Kill(InstanceId + 1); // will need a more unique id
+        DOTween.Kill(InstanceId + 1); // will need a more unique id
 
-      //  transform.DOLocalMoveY(newLocalY, duration).SetId(InstanceId + 1).OnComplete(() =>
+        transform.DOLocalMoveY(newLocalY, duration).SetId(InstanceId + 1).OnComplete(() =>
         {
             if (newLocalY != 0)
             {
                // AudioManager.Instance.PlayClipAtPosition(AudioManager.Instance.LiftTile, transform.position);
             }
-        };
+        });
     }
 
     public float GetGrowthRate()
