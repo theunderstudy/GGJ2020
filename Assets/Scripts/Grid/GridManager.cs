@@ -11,10 +11,10 @@ public class GridManagerEditor : Editor
     {
         DrawDefaultInspector();
         m_GM = (GridManager)target;
-        //if (GUILayout.Button("Generate grid"))
-        //{
-        //    m_GM.GenerateGrid();
-        //}
+        if (GUILayout.Button("Generate grid"))
+        {
+            m_GM.GenerateGrid();
+        }
 
         //if (GUILayout.Button("Clear grid"))
         //{
@@ -75,14 +75,20 @@ public class GridManager : Singleton<GridManager>
 
     public void GenerateGrid()
     {
-
-        for (int i = 0; i < GridKeys.Length; i++)
+        ClearGrid();
+        for (int i = 0; i < 10; i++)
         {
-            TileKey _newKey = GridKeys[i];
-            GridTile _newTile = Instantiate(TilePrefab, transform);
-            _newTile.Init(_newKey);
-            Grid.Add(_newKey, _newTile);
+            for (int x = 0; x < 10; x++)
+            {
+                TileKey _newKey = new TileKey(x,i); 
+               
+                GridTile _newTile = (GridTile)PrefabUtility.InstantiatePrefab(TilePrefab, transform);
+                _newTile.Init(_newKey);
+                Grid.Add(_newKey, _newTile);
+                _newTile.name = _newKey.X + " " + _newKey.Z;
+            }
         }
+        
 
         foreach (KeyValuePair<TileKey, GridTile> item in Grid)
         {
