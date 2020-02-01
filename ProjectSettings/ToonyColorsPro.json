@@ -1,11 +1,16 @@
 {
     "AutoNames": true,
     "SubFolders": true,
-    "OverwriteConfig": false,
+    "OverwriteConfig": true,
     "LoadAllShaders": false,
-    "CustomOutputPath": "/JMO Assets/Toony Colors Pro/Shaders Generated/",
+    "CustomOutputPath": "Rendering/Shaders",
     "LastImplementationExportImportPath": "/Users/patrick/Documents/ActiveGameProjects/GGJ2020/Assets",
     "OpenedFoldouts": [
-        "LIGHTING"
+        "LIGHTING",
+        "STYLIZATION",
+        "SPECIAL EFFECTS",
+        "TRANSPARENCY/BLENDING",
+        "SHADER STATES",
+        "OPTIONS"
     ]
 }
