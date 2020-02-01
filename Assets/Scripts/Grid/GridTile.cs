@@ -137,7 +137,7 @@ public class GridTile : MonoBehaviour
         for (int i = 0; i < TileRenderers.Length; i++)
         {
            // DOTween.Complete(InstanceId);
-           // TileRenderers[i].material.DOColor(color, duration).SetId(InstanceId);
+           //// TileRenderers[i].material.DOColor(color, duration).SetId(InstanceId);
         }
 
     }

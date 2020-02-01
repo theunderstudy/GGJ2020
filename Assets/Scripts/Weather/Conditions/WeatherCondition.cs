@@ -5,15 +5,18 @@ using UnityEngine;
 public class WeatherCondition : MonoBehaviour
 {
     public EWeather condition;
-    // Start is called before the first frame update
-    void Start()
-    {
+    public Material skybox;
+    public GameObject[] LoopingGameParticles;
+  
 
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void IntializeWeather(Transform cameraTransform)
     {
-        
+        for (int i = 0; i < LoopingGameParticles.Length; i++)
+        {
+            LoopingGameParticles[i].transform.parent = cameraTransform;
+            LoopingGameParticles[i].transform.localPosition = Vector3.zero;
+
+        }
     }
 }
