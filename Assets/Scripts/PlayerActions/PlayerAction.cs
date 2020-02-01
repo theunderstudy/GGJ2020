@@ -36,6 +36,9 @@ public class PlayerAction : MonoBehaviour
             if (CanUpgrade(_newTile.UpgradeType))
             {
                 _newTile.UpgradeTile(UpgradeToPlace);
+
+
+                PlayerController.Instance.StartWork(_newTile.transform.position, 1f);
             }
         }
     }

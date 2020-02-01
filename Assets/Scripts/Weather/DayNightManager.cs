@@ -14,7 +14,4 @@ public class DayNightManager : Singleton<DayNightManager>
         CurrentDay += 1;
         NewDayEvent?.Invoke(_currentWeather);
     }
-   
-
-
 }

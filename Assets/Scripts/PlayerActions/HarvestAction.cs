@@ -13,11 +13,19 @@ public class HarvestAction : PlayerAction
         {
             if (CanUpgrade(_newTile.UpgradeType))
             {
+                
+
                 TreeUpgrade _treeUpgrade = (TreeUpgrade)_newTile.Upgrade;
 
-                _newTile.UpgradeTile(UpgradeToPlace);
+                if (_treeUpgrade.Grown())
+                {
+                    _newTile.UpgradeTile(UpgradeToPlace);
 
-                ObjectPool.Instance.WoodCount += WoodPerTree;
+                    ObjectPool.Instance.WoodCount += WoodPerTree;
+
+                    PlayerController.Instance.StartWork(_newTile.transform.position , 1f);
+                }
+              
             }
         }
     }

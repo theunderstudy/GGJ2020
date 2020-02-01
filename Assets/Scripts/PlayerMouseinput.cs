@@ -23,32 +23,42 @@ public class PlayerMouseinput : Singleton<PlayerMouseinput>
 
     private void Update()
     {
+        if (PlayerController.Instance.bWorking)
+        {
+            return;
+        }
+
         CheckPlayerInput();
+
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            DayNightManager.Instance.StartNewDay();
+            SetPlayerAction(PlayerActions[0]);// till
+            UIManager.Instance.HighlightButton(0);
         }
-
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            SetPlayerAction(PlayerActions[0]);
-        } 
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            SetPlayerAction(PlayerActions[1]);
-        }         
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            SetPlayerAction(PlayerActions[2]);
+            UIManager.Instance.HighlightButton(1);
+            SetPlayerAction(PlayerActions[1]);// plant
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SetPlayerAction(PlayerActions[2]);// water
 
+            UIManager.Instance.HighlightButton(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SetPlayerAction(PlayerActions[3]);// harvest
 
+            UIManager.Instance.HighlightButton(3);
+        }
+        
     }
 
 
     public void CheckPlayerInput()
-    {      
+    {
         if (Input.GetMouseButton(0))
         {
             if (CurrentPlayerAction != null)

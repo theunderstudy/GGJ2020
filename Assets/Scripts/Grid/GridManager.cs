@@ -78,6 +78,8 @@ public class GridManager : Singleton<GridManager>
 
     public void GenerateGrid()
     {
+#if UNITY_EDITOR
+
         ClearGrid();
         for (int i = 0; i < gridsize; i++)
         {
@@ -99,6 +101,8 @@ public class GridManager : Singleton<GridManager>
         }
 
         // NavMesh.BuildNavMesh();
+
+#endif
     }
 
     public void ClearGrid()

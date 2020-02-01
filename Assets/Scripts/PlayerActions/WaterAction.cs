@@ -14,6 +14,8 @@ public class WaterAction : PlayerAction
                 if (_newTile.Upgrade.CanWater())
                 {
                     _newTile.Upgrade.WaterTile();
+
+                    PlayerController.Instance.StartWork(_newTile.transform.position, 1f);
                 }              
             }
         }

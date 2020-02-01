@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(Rigidbody), typeof(BoxCollider), typeof(Animator))]
 public class PlayerController : Singleton<PlayerController>
@@ -21,6 +22,12 @@ public class PlayerController : Singleton<PlayerController>
     private bool continueRotate = false;
     public Vector3 rotationTarget;
     private Vector3 absoluteTarget;
+
+    public int Energy = 100;
+    public int MaxEnergy = 100;
+
+    public bool bWorking = false;
+    public GameObject WorkParticles;
 
     void Start()
     {
@@ -76,8 +83,8 @@ public class PlayerController : Singleton<PlayerController>
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        Debug.Log("Horizontal" + horizontal);
-        Debug.Log("Vertical" + vertical);
+        //Debug.Log("Horizontal" + horizontal);
+        //Debug.Log("Vertical" + vertical);
 
         // I don't feel good about this but it'll work
         // possibly?
@@ -171,5 +178,40 @@ public class PlayerController : Singleton<PlayerController>
             keyCodes.Add(k);
         }
         return keyCodes;
+    }
+
+    public void StartNewDay(EWeather weather)
+    {
+        Energy = MaxEnergy;
+    }
+
+    private void OnEnable()
+    {
+        DayNightManager.NewDayEvent += StartNewDay;
+    }
+    private void OnDisable()
+    {
+        DayNightManager.NewDayEvent -= StartNewDay;
+    }
+
+
+    public void StartWork(Vector3 workTarget , float workTime)
+    {
+        if (bWorking)
+        {
+            return;
+        }
+        bWorking = true;
+        transform.DOLookAt(workTarget , 0.2f);
+        StartCoroutine(WorkRoutine(workTime));
+
+    }
+
+    IEnumerator WorkRoutine(float workTime)
+    {
+        WorkParticles.SetActive(true);
+        yield return new WaitForSeconds(workTime);
+        WorkParticles.SetActive(false);
+        bWorking = false;
     }
 }
