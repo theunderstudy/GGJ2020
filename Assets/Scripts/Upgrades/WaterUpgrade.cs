@@ -20,7 +20,7 @@ public class WaterUpgrade : UpgradeBase
         ParentTile.EnableRenderers();
     }
 
-    public override void StartNewDay(EWeather newWeather)
+    public override void EndOfDay(EWeather newWeather)
     {
       
     }
@@ -28,5 +28,9 @@ public class WaterUpgrade : UpgradeBase
     public override void WaterTile()
     {
        
+    }
+
+    public override void StartNewDay(EWeather newWeather)
+    {
     }
 }

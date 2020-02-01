@@ -27,13 +27,12 @@ public class GameManager : Singleton<GameManager>
         UIManager.Instance.NightFadeOut(fadetime);
 
         yield return new WaitForSeconds(fadetime*1.2f);
-
+        DayNightManager.Instance.EndDay();
         //update local weather
 
         // start new day
         DayNightManager.Instance.StartNewDay();
         UIManager.Instance.NightFadeIn(fadetime);
-
         yield return new WaitForSeconds(fadetime * 1.2f);
 
     }
