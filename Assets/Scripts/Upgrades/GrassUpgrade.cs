@@ -28,7 +28,7 @@ public class GrassUpgrade : UpgradeBase
         ParentTile.EnableRenderers();
     }
 
-    public override void StartNewDay(EWeather newWeather)
+    public override void EndOfDay(EWeather newWeather)
     {
         m_CurrentTurn += 1;
 
@@ -55,5 +55,10 @@ public class GrassUpgrade : UpgradeBase
         {
             m_UpgradeRenderers[i].material.color = (_newColor);
         }
+    }
+
+    public override void StartNewDay(EWeather newWeather)
+    {
+      
     }
 }

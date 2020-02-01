@@ -11,6 +11,10 @@ public class HarvestAction : PlayerAction
         GridTile _newTile = MouseInput.GetTileAtMousePosition();
         if (_newTile != null)
         {
+            if (!CanWorkTile(_newTile))
+            {
+                return;
+            }
             if (CanUpgrade(_newTile.UpgradeType))
             {
                 
@@ -42,7 +46,10 @@ public class HarvestAction : PlayerAction
             }
             return;
         }
-
+        if (!CanWorkTile(_newTile))
+        {
+            return;
+        }
         if (_newTile == m_SelectedTile)
         {
             return;
@@ -54,6 +61,7 @@ public class HarvestAction : PlayerAction
         }
 
         m_SelectedTile = _newTile;
+
 
         if (CanUpgrade(m_SelectedTile.UpgradeType))
         {

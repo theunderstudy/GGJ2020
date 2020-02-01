@@ -29,10 +29,12 @@ public class PlayerController : Singleton<PlayerController>
     public bool bWorking = false;
     public GameObject WorkParticles;
 
+    public GridTile CurrentTile;
+
     void Start()
     {
         // playerObject = GameObject.Find("PlayerTestObject");
-        ground = GameObject.Find("Ground");
+       
 
         currentEuler = defaultRotation;
 
@@ -78,6 +80,14 @@ public class PlayerController : Singleton<PlayerController>
     // Update is called once per frame
     void Update()
     {
+
+        if (bWorking)
+        {
+            return;
+        }
+
+        UpdateCurrentTile();
+
         HashSet<KeyCode> usedKeys = new HashSet<KeyCode>();
 
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -187,24 +197,40 @@ public class PlayerController : Singleton<PlayerController>
 
     private void OnEnable()
     {
-        DayNightManager.NewDayEvent += StartNewDay;
+        DayNightManager.EndDayEvent += StartNewDay;
     }
     private void OnDisable()
     {
-        DayNightManager.NewDayEvent -= StartNewDay;
+        DayNightManager.EndDayEvent -= StartNewDay;
+    }
+
+    public bool CanWork()
+    {
+        return Energy > 0;
     }
 
 
+    private void UpdateCurrentTile()
+    {
+        GridTile _tile = GridManager.Instance.GetTile(transform.position);
+
+        if (_tile != null)
+        {
+            if (_tile != CurrentTile)
+            {
+                CurrentTile = _tile;
+            }
+        }
+    }
     public void StartWork(Vector3 workTarget , float workTime)
     {
         if (bWorking)
         {
             return;
         }
-        bWorking = true;
-        transform.DOLookAt(workTarget , 0.2f);
-        StartCoroutine(WorkRoutine(workTime));
 
+        bWorking = true;
+        StartCoroutine(WorkRoutine(workTime));
     }
 
     IEnumerator WorkRoutine(float workTime)

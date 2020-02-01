@@ -26,7 +26,7 @@ public class TreeUpgrade : UpgradeBase
         }
     }
 
-    public override void StartNewDay(EWeather newWeather)
+    public override void EndOfDay(EWeather newWeather)
     {
         m_CurrentTurn += bWatered ? 2:1;
         UpgradeModel.transform.localScale = Vector3.Lerp(Vector3.zero , Vector3.one , (float) m_CurrentTurn / TurnsToGrow);
@@ -58,5 +58,9 @@ public class TreeUpgrade : UpgradeBase
         {
             item.material.color = WateredColor;
         }
+    }
+
+    public override void StartNewDay(EWeather newWeather)
+    {
     }
 }
