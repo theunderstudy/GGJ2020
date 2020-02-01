@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Test Material
-  m_Shader: {fileID: 4800000, guid: d38a460006bca42169e31b29d162e446, type: 3}
-  m_ShaderKeywords: 
+  m_Name: IL3DN_Ground_Grass
+  m_Shader: {fileID: 4800000, guid: 1cc2f4fe8fa301c498cb10f0bfbacec0, type: 3}
+  m_ShaderKeywords: EFFECT_HUE_VARIATION GEOM_TYPE_LEAF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -35,15 +35,19 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _DetailTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MainTex:
+    - _GlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MatCapTex:
+    - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -59,76 +63,47 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SketchTexture:
-        m_Texture: {fileID: 2800000, guid: b1b62855ddf91f140a6b405c3037c38d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SpecularRamp:
+    - _ShadowOffset:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _StylizedThreshold:
+    - _TranslucencyMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
+    - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0
     - _GlossyReflections: 1
-    - _HSV_H: 0
-    - _HSV_S: 0
-    - _HSV_V: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineWidth: 1.13
     - _Parallax: 0.02
-    - _RampSmoothing: 0.1
-    - _RampSmoothingOtherLights: 0.5
-    - _RampThreshold: 0.324
-    - _RampThresholdOtherLights: 0.709
-    - _RimMax: 0.84
-    - _RimMaxVert: 1.08
-    - _RimMin: 0.53
-    - _RimMinVert: 0.36
-    - _Shadow_HSV_H: 73
-    - _Shadow_HSV_S: 0.21
-    - _Shadow_HSV_V: -0.12
-    - _SketchMax: 0.987
-    - _SketchMin: 0
-    - _SketchTexture_OffsetSpeed: 120
+    - _ShadowStrength: 0.5
+    - _Shininess: 0.15
     - _SmoothnessTextureChannel: 0
+    - _Snow: 0
     - _SpecularHighlights: 1
-    - _SpecularSmoothness: 0.2
-    - _SpecularSmoothnessPBR: 0.449
-    - _SpecularToonBands: 3
-    - _SpecularToonSize: 0.211
-    - _SpecularToonSmoothness: 0.194
+    - _SquashAmount: 1
     - _SrcBlend: 1
+    - _TranslucencyViewDependency: 0
     - _UVSec: 0
+    - _WindQuality: 0
     - _ZWrite: 1
-    - __BeginGroup_ShadowHSV: 1
-    - __EndGroup: 0
-    - __dummy__: 0
-    - __outline_gui_dummy__: 0
+    - __dirty: 0
     m_Colors:
-    - _Color: {r: 1, g: 0.4729777, b: 0.4198113, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HColor: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
-    - _MatCapColor: {r: 0.9716981, g: 0.53626734, b: 0.53626734, a: 1}
-    - _OutlineColorVertex: {r: 0, g: 0, b: 0, a: 1}
-    - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.5}
-    - _RimDir: {r: 0, g: 0, b: 1, a: 1}
-    - _RimDirVert: {r: 0, g: 0, b: 1, a: 1}
-    - _SColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
-    - _SpecularColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _TCP2_AMBIENT_BACK: {r: 0, g: 0, b: 0, a: 1}
-    - _TCP2_AMBIENT_BOTTOM: {r: 0, g: 0, b: 0, a: 1}
-    - _TCP2_AMBIENT_FRONT: {r: 0, g: 0, b: 0, a: 1}
-    - _TCP2_AMBIENT_LEFT: {r: 0, g: 0, b: 0, a: 1}
-    - _TCP2_AMBIENT_RIGHT: {r: 0, g: 0, b: 0, a: 1}
-    - _TCP2_AMBIENT_TOP: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.34133813, g: 0.43529412, b: 0.117647044, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+    - _HueVariation: {r: 1, g: 1, b: 1, a: 1}
+    - _TranslucencyColor: {r: 0.72321427, g: 1, b: 0, a: 1}
+    - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}

@@ -45,28 +45,28 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Cutoff: 0.5
-    - _FresnelExp: 1.0714285
-    - _GradientPosition1: 4.9392614
-    - _GradientPosition2: 11.071144
-    - _LightColorIntensity: 0.458
-    - _MainFoamIntensity: 2.2
-    - _MainFoamOpacity: 0.463
-    - _MainFoamScale: 22.88
+    - _FresnelExp: 0.41844344
+    - _GradientPosition1: 5.1244464
+    - _GradientPosition2: 10.916449
+    - _LightColorIntensity: 0.386
+    - _MainFoamIntensity: 0.4
+    - _MainFoamOpacity: 0.508
+    - _MainFoamScale: 3.45
     - _MainFoamSpeed: 0.56
-    - _Opacity: 0.22
+    - _Opacity: 1
     - _OpacityDepth: 1.78
-    - _RealTimeReflection: 1
+    - _RealTimeReflection: 0
     - _ReflectionsIntensity: 2.13
     - _RefractionIntensity: 1.71
-    - _Roughness: 0.206
-    - _SecondaryFoamAlwaysVisible: 0
-    - _SecondaryFoamIntensity: 50.4
-    - _SecondaryFoamOpacity: 0.164
-    - _SecondaryFoamScale: 35.5
+    - _Roughness: 0.498
+    - _SecondaryFoamAlwaysVisible: 1
+    - _SecondaryFoamIntensity: 57.72
+    - _SecondaryFoamOpacity: 0.075
+    - _SecondaryFoamScale: 4.25
     - _ShadowIntensity: 1
     - _Shadows: 1
     - _ShadowsIntensity: 1
-    - _SpecularIntensity: 0.336
+    - _SpecularIntensity: 0.458
     - _TurbulenceDistortionIntesity: 0.73
     - _TurbulenceScale: 15.53
     - _VertexOffset: 0
