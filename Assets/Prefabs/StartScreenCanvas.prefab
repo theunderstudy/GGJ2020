@@ -425,6 +425,7 @@ GameObject:
   - component: {fileID: 6257013391542058419}
   - component: {fileID: 6257013391542058418}
   - component: {fileID: 6257013391542058429}
+  - component: {fileID: 2828755371265319565}
   m_Layer: 5
   m_Name: StartScreenCanvas
   m_TagString: Untagged
@@ -526,3 +527,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 6257013391542058428}
+  fadeSpeed: 0.1
+--- !u!225 &2828755371265319565
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6257013391542058428}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
