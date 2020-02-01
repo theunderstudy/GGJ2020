@@ -12,12 +12,20 @@ public class PlayerMouseinput : Singleton<PlayerMouseinput>
 
     private PlayerAction CurrentPlayerAction;
     public PlayerAction[] PlayerActions;
+
+    public GameObject[] GridHighlights;
+
     protected override void Awake()
     {
         base.Awake();
         m_Camera = Camera.main;
 
+    }
+
+    private void Start()
+    {
         SetPlayerAction(PlayerActions[0]);
+
     }
 
 
@@ -64,6 +72,7 @@ public class PlayerMouseinput : Singleton<PlayerMouseinput>
             if (CurrentPlayerAction != null)
             {
                 CurrentPlayerAction.MouseDown();
+                HighlightWorkableTiles();
             }
         }
         else
@@ -95,9 +104,57 @@ public class PlayerMouseinput : Singleton<PlayerMouseinput>
         return null;
     }
 
+    private void HighlightWorkableTiles()
+    {
+        for (int i = 0; i < GridHighlights.Length; i++)
+        {
+            GridHighlights[i].SetActive(false);
+        }
+
+        if (CurrentPlayerAction!=null)
+        {
+            GridTile _playerTile = PlayerController.Instance.CurrentTile;
+            if (_playerTile == null)
+            {
+                return;
+            }
+            if (CurrentPlayerAction.CanUpgrade(_playerTile.UpgradeType))
+            {
+                GameObject _highlight = GetInactiveHightlight();
+                _highlight.gameObject.SetActive(true);
+                _highlight.transform.parent = _playerTile.transform;
+                _highlight.transform.localPosition = Vector3.zero;
+            }
+
+            foreach (var _tile in _playerTile.AdjacentTiles)
+            {
+                if (CurrentPlayerAction.CanUpgrade(_tile.Value.UpgradeType))
+                {
+                    GameObject _highlight = GetInactiveHightlight();
+                    _highlight.gameObject.SetActive(true);
+                    _highlight.transform.parent = _tile.Value.transform;
+                    _highlight.transform.localPosition = Vector3.zero;
+                }
+            }
+        }
+    }
+
+    private GameObject GetInactiveHightlight()
+    {
+        for (int i = 0; i < GridHighlights.Length; i++)
+        {
+            if (!GridHighlights[i].activeInHierarchy)
+            {
+                return GridHighlights[i];
+            }
+        }
+
+        return null;
+    }
+
     public void SetPlayerAction(PlayerAction newAction)
     {
         CurrentPlayerAction = newAction;
-
+        HighlightWorkableTiles();
     }
 }

@@ -31,6 +31,12 @@ public class PlayerController : Singleton<PlayerController>
 
     public GridTile CurrentTile;
 
+
+    protected override void Awake()
+    {
+        base.Awake();
+        UpdateCurrentTile();
+    }
     void Start()
     {
         // playerObject = GameObject.Find("PlayerTestObject");
