@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Text)), RequireComponent(typeof(Outline))]
+[RequireComponent(typeof(Text), typeof(Outline))]
 public class UI_Subtitle_Controller : MonoBehaviour
 {
     //Subtitle Preview

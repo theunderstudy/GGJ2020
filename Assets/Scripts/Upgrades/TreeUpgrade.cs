@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class TreeUpgrade : UpgradeBase
 {
-    public int TurnsToGrow = 10;
+    private int TurnsToGrow = 7;
     private int m_CurrentTurn = 0;
-
-    public bool bWatered = false;
 
     public Vector3 StartPosition = new Vector3(0,1,0);
     public Vector3 EndPosition = new Vector3(0,0,0);
+
+    public Color WateredColor, NotWateredColor;
     public override void ResetUpgrade()
     {
         m_CurrentTurn = 0;
@@ -19,6 +19,11 @@ public class TreeUpgrade : UpgradeBase
     {
         UpgradeModel.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one,0.1f);
         UpgradeModel.transform.localPosition = Vector3.Lerp(StartPosition, EndPosition, 0.1f);
+
+        foreach (var item in ParentTile.TileRenderers)
+        {
+            item.material.color = NotWateredColor;
+        }
     }
 
     public override void StartNewDay(EWeather newWeather)
@@ -32,6 +37,26 @@ public class TreeUpgrade : UpgradeBase
             // play some leaf particle
             Debug.Log( gameObject.name + " full grown");
 
+        }
+        bWatered = false;
+
+        foreach (var item in ParentTile.TileRenderers)
+        {
+            item.material.color = NotWateredColor;
+        }
+    }
+
+    public bool Grown()
+    {
+        return m_CurrentTurn >= TurnsToGrow;
+    }
+
+    public override void WaterTile()
+    {
+        bWatered = true;
+        foreach (var item in ParentTile.TileRenderers)
+        {
+            item.material.color = WateredColor;
         }
     }
 }

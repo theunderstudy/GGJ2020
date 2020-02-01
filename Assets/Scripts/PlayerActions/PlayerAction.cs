@@ -12,6 +12,8 @@ public class PlayerAction : MonoBehaviour
 
     protected GridTile m_SelectedTile;
 
+
+
     private void Start()
     {
         if (MouseInput == null)
@@ -19,25 +21,31 @@ public class PlayerAction : MonoBehaviour
             MouseInput = PlayerMouseinput.Instance;
         }
     }
-    public void MouseDown()
+
+    public virtual bool CanSelectAction()
+    {
+        return true;
+    }
+
+
+    public virtual void MouseDown()
     {
         GridTile _newTile = MouseInput.GetTileAtMousePosition();
-
-
         if (_newTile != null)
         {
             if (CanUpgrade(_newTile.UpgradeType))
             {
                 _newTile.UpgradeTile(UpgradeToPlace);
+
+
+                PlayerController.Instance.StartWork(_newTile.transform.position, 1f);
             }
         }
     }
 
-    public void MousePositionUpdated()
+    public virtual void MousePositionUpdated()
     {
         GridTile _newTile = MouseInput.GetTileAtMousePosition();
-
-
         if (_newTile == null)
         {
             if (m_SelectedTile != null)

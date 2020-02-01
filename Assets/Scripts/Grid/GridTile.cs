@@ -5,7 +5,6 @@ using UnityEngine;
 public class GridTile : MonoBehaviour
 {
     public TileKey Key;
-    private Color MyColor;
     public UpgradeBase Upgrade;
     public Dictionary<TileKey, GridTile> SurroundingTiles = new Dictionary<TileKey, GridTile>();
     public Dictionary<TileKey, GridTile> AdjacentTiles = new Dictionary<TileKey, GridTile>();
@@ -127,10 +126,7 @@ public class GridTile : MonoBehaviour
         }
     }
 
-    public void ClearColor(float duration = 0)
-    {
-        SetColor(MyColor, duration);
-    }
+   
 
     public void SetColor(Color color, float duration = 0)
     {

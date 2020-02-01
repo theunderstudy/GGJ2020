@@ -5,6 +5,9 @@ public abstract class UpgradeBase : MonoBehaviour
     public UpgradeTypes UpgradeType;
     public GridTile ParentTile;
     public GameObject UpgradeModel;
+    protected bool bWatered=false;
+
+    
     public virtual void SetPositioning(Transform parent)
     {
         transform.parent = parent;
@@ -53,4 +56,12 @@ public abstract class UpgradeBase : MonoBehaviour
         DayNightManager.NewDayEvent -= StartNewDay;
 
     }
+
+    public abstract void WaterTile();
+
+    public bool CanWater()
+    {
+        return !bWatered;
+    }
+   
 }
