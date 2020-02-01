@@ -15,12 +15,21 @@ public class PlayerController : MonoBehaviour
     public float speed = 1.0f;
     public float rotationSpeed = 45.0f; // 45 degrees per tick?
 
-    public Vector3 target;
     private Vector3 currentEuler;
+    public Vector3 defaultRotation = new Vector3(0f,0f,0f);
+
+    private bool continueRotate = false;
+    public Vector3 counterclockwise = new Vector3(0f, -1f, 0f);
+    public Vector3 clockwise = new Vector3(0f, 1f, 0f);
+    public Vector3 rotationTarget;
+    private Vector3 absoluteTarget;
     void Start()
     {
         // playerObject = GameObject.Find("PlayerTestObject");
         ground = GameObject.Find("Ground");
+
+        currentEuler = defaultRotation;
+
         movement = new Dictionary<KeyCode, Vector3>();
 
         movement.Add(KeyCode.W, Vector3.forward);
@@ -30,10 +39,14 @@ public class PlayerController : MonoBehaviour
 
         rotationTargets = new Dictionary<HashSet<KeyCode>, Vector3>(HashSet<KeyCode>.CreateSetComparer());
 
+        // Normal WASD
+
         rotationTargets.Add(setOf(new[] { KeyCode.W }), new Vector3(0f,270f,0f));
+        rotationTargets.Add(setOf(new[] { KeyCode.A }), new Vector3(0f,180f,0f));
         rotationTargets.Add(setOf(new[] { KeyCode.S }), new Vector3(0f,90f,0f));
         rotationTargets.Add(setOf(new[] { KeyCode.D }), new Vector3(0f,0f,0f));
-        rotationTargets.Add(setOf(new[] { KeyCode.A }), new Vector3(0f,180f,0f));
+
+        // Pressing multiple keys at once
 
         // W+D should be 305f
         // S+D should be 45f
@@ -59,7 +72,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HashSet<KeyCode> usedKeys = new HashSet<KeyCode>();
-        
+
         foreach (var k in movement) {
             if (Input.GetKey(k.Key)) {
                 transform.Translate((k.Value * Time.deltaTime) * speed, ground.transform);
@@ -70,14 +83,43 @@ public class PlayerController : MonoBehaviour
         // WOO
         
         if (usedKeys.Count > 0) {
-            Debug.Log("keys used " + usedKeys.Count);
-            Debug.Log(usedKeys);
-            Vector3 rotationTarget;
             rotationTargets.TryGetValue(usedKeys, out rotationTarget);
-            transform.eulerAngles = rotationTarget;
-            // if (currentEuler != rotationTarget) {
-                
-            // }
+            absoluteTarget = rotationTarget;
+            if (currentEuler != rotationTarget) {
+                // Update the current euler towards the rotation target
+
+                if (currentEuler.y >= 270 && (rotationTarget.y >= 0 || rotationTarget.y <= 90)) {
+                    // If we are over 270 and we're trying to get to 0 or 90,
+                    rotationTarget.y += 360.0f;
+                }
+
+                if (currentEuler.y <= 90 && rotationTarget.y >= 270) {
+                    currentEuler.y += 360.0f;
+                }
+
+                continueRotate = true;
+            }
+        }
+
+        if (continueRotate) {
+            // Keep rotating!
+            
+            if (currentEuler == rotationTarget) {
+                // Update the current euler towards the rotation target
+                continueRotate = false;
+                // we may be in a state where currentEuler doesn't actually
+                // correspond to reality, since we're screwing with the rotation values above.
+                // So, we should reset the currentEuler to our expected rotation space.
+                currentEuler = absoluteTarget;
+            }
+            else {
+                Debug.Log("rotate?");
+                // Hardcoding rotational axis, for now
+
+                currentEuler = Vector3.RotateTowards(currentEuler, rotationTarget, 1, rotationSpeed);
+                transform.eulerAngles = currentEuler;
+
+            }
         }
     }
     private HashSet<KeyCode> setOf (KeyCode[] keys) {
