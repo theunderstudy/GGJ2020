@@ -20,6 +20,26 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1000
   Exists: 1
+--- !u!114 &-4052915238858288382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: D:\UnityProjects\GGJ\GGJ2020\Assets\Audio\GGJ2020_SoundDesign\Build\Desktop\Master.strings.bank
+  SubDir: 
+  lastModified: 637161766205192776
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 688
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,15 +53,15 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 2163239511491591979}
-  - {fileID: -5283202237449387423}
+  - {fileID: -4052915238858288382}
+  - {fileID: 2794319781412978117}
   EditorEvents: []
   EditorParameters: []
   MasterBanks:
-  - {fileID: -5283202237449387423}
+  - {fileID: 2794319781412978117}
   StringsBanks:
-  - {fileID: 2163239511491591979}
-  stringsBankWriteTime: 637161574510000000
+  - {fileID: -4052915238858288382}
+  stringsBankWriteTime: 637161766205192776
   cacheVersion: 3
 --- !u!114 &2163239511491591979
 MonoBehaviour:
@@ -62,4 +82,24 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 688
+  Exists: 1
+--- !u!114 &2794319781412978117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: D:\UnityProjects\GGJ\GGJ2020\Assets\Audio\GGJ2020_SoundDesign\Build\Desktop\Master.bank
+  SubDir: 
+  lastModified: 637161766205183125
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1000
   Exists: 1

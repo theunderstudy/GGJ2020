@@ -1,46 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
-public class PlayerAction : MonoBehaviour
+public class HarvestAction : PlayerAction
 {
-    public UpgradeTypes UpgradeToPlace;
-
-    public UpgradeTypes[] AffectedTypes;
-
-    protected PlayerMouseinput MouseInput;
-
-    protected GridTile m_SelectedTile;
-
-
-
-    private void Start()
-    {
-        if (MouseInput == null)
-        {
-            MouseInput = PlayerMouseinput.Instance;
-        }
-    }
-
-    public virtual bool CanSelectAction()
-    {
-        return true;
-    }
-
-
-    public virtual void MouseDown()
+    public int WoodPerTree=2;
+    public override void MouseDown()
     {
         GridTile _newTile = MouseInput.GetTileAtMousePosition();
         if (_newTile != null)
         {
             if (CanUpgrade(_newTile.UpgradeType))
             {
+                TreeUpgrade _treeUpgrade = (TreeUpgrade)_newTile.Upgrade;
+
                 _newTile.UpgradeTile(UpgradeToPlace);
+
+                ObjectPool.Instance.WoodCount += WoodPerTree;
             }
         }
     }
 
-    public virtual void MousePositionUpdated()
+    public override void MousePositionUpdated()
     {
         GridTile _newTile = MouseInput.GetTileAtMousePosition();
         if (_newTile == null)
@@ -74,19 +56,4 @@ public class PlayerAction : MonoBehaviour
             m_SelectedTile = null;
         }
     }
-
-    protected bool CanUpgrade(UpgradeTypes upgradeType)
-    {
-
-        for (int i = 0; i < AffectedTypes.Length; i++)
-        {
-            if (AffectedTypes[i] == upgradeType)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
 }

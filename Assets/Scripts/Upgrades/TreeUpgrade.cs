@@ -7,8 +7,6 @@ public class TreeUpgrade : UpgradeBase
     public int TurnsToGrow = 10;
     private int m_CurrentTurn = 0;
 
-    public bool bWatered = false;
-
     public Vector3 StartPosition = new Vector3(0,1,0);
     public Vector3 EndPosition = new Vector3(0,0,0);
     public override void ResetUpgrade()
@@ -33,5 +31,17 @@ public class TreeUpgrade : UpgradeBase
             Debug.Log( gameObject.name + " full grown");
 
         }
+        bWatered = false;
+    }
+
+    public bool Grown()
+    {
+        return m_CurrentTurn >= TurnsToGrow;
+    }
+
+    public override void WaterTile()
+    {
+        bWatered = true;
+
     }
 }

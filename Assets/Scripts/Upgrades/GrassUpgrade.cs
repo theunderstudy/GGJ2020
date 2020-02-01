@@ -44,4 +44,11 @@ public class GrassUpgrade : UpgradeBase
             ParentTile.UpgradeTile(UpgradeTypes.dirt);
         }
     }
+
+    public override void WaterTile()
+    {
+        bWatered = true;
+
+        // Change color of tile
+    }
 }
