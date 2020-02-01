@@ -25,8 +25,4 @@ public class WaterUpgrade : UpgradeBase
     }
 
 
-    private void Update()
-    {
-        Vector3 _currentRotation = transform.rotation.eulerAngles;
-    }
 }

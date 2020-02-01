@@ -189,7 +189,7 @@ public class GridTile : MonoBehaviour
         // Reset to default
         if (Upgrade != null)
         {
-           
+            Upgrade.RemoveFromTile(this);
             ObjectPool.Instance.ReturnUpgrade(Upgrade);
             Upgrade = null;
         }

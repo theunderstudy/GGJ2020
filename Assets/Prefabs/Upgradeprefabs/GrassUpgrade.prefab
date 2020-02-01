@@ -140,3 +140,6 @@ MonoBehaviour:
   UpgradeType: 2
   ParentTile: {fileID: 0}
   UpgradeModel: {fileID: 2000838721387551111}
+  TurnsTillDegrade: 3
+  FreshGreenColor: {r: 0.65287757, g: 1, b: 0.5707547, a: 1}
+  ShitDirtColor: {r: 0.8679245, g: 0.7436312, b: 0.46262014, a: 1}

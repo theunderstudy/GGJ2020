@@ -47,6 +47,10 @@ MonoBehaviour:
   UpgradeType: 3
   ParentTile: {fileID: 0}
   UpgradeModel: {fileID: 8898627366586496488}
+  TurnsToGrow: 10
+  bWatered: 0
+  StartPosition: {x: 0, y: 0.5, z: 0}
+  EndPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &3089635975793917261
 GameObject:
   m_ObjectHideFlags: 0
