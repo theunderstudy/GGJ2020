@@ -10,11 +10,14 @@ public class PlayerMouseinput : Singleton<PlayerMouseinput>
     private RaycastHit m_Hit;
     private Camera m_Camera;
 
-    public PlayerAction CurrentPlayerAction;
+    private PlayerAction CurrentPlayerAction;
+    public PlayerAction[] PlayerActions;
     protected override void Awake()
     {
         base.Awake();
         m_Camera = Camera.main;
+
+        SetPlayerAction(PlayerActions[0]);
     }
 
 
@@ -26,6 +29,21 @@ public class PlayerMouseinput : Singleton<PlayerMouseinput>
         {
             DayNightManager.Instance.StartNewDay();
         }
+
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            SetPlayerAction(PlayerActions[0]);
+        } 
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            SetPlayerAction(PlayerActions[1]);
+        }         
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            SetPlayerAction(PlayerActions[2]);
+        }
+
+
     }
 
 
@@ -65,5 +83,11 @@ public class PlayerMouseinput : Singleton<PlayerMouseinput>
             return _tile;
         }
         return null;
+    }
+
+    public void SetPlayerAction(PlayerAction newAction)
+    {
+        CurrentPlayerAction = newAction;
+
     }
 }

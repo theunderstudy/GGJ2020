@@ -6,11 +6,12 @@ public class WaterUpgrade : UpgradeBase
 {
     public override void ResetUpgrade()
     {
-
+        bWatered = true;
     }
 
     protected override void SetupTileForUpgrade()
     {
+        bWatered = true;
         ParentTile.DisableRenderers();
     }
 
@@ -24,5 +25,8 @@ public class WaterUpgrade : UpgradeBase
       
     }
 
-
+    public override void WaterTile()
+    {
+       
+    }
 }

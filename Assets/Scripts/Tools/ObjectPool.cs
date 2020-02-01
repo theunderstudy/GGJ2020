@@ -9,6 +9,10 @@ public class ObjectPool : Singleton<ObjectPool>
     private Stack<UpgradeBase> m_UpgradeStack;
     private UpgradeBase m_Upgrade;
 
+
+    public int WoodCount = 0;
+
+
     protected override void Awake()
     {
         base.Awake();
