@@ -18,9 +18,14 @@ public abstract class UpgradeBase : MonoBehaviour
     }
     public virtual void RemoveFromTile(GridTile tile)
     {
-      
+        ResetTileFromUpgrade();
     }
     protected virtual void SetupTileForUpgrade()
+    {
+
+    } 
+    
+    protected virtual void ResetTileFromUpgrade()
     {
 
     }
