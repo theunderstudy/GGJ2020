@@ -6,6 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(GridManager))]
 public class GridManagerEditor : Editor
 {
+
     private GridManager m_GM;
     public override void OnInspectorGUI()
     {
@@ -39,6 +40,8 @@ public class GridManager : Singleton<GridManager>
 {
     public GridTile TilePrefab;
 
+    public int gridsize;
+
     public TileKey[] GridKeys;
     public Dictionary<TileKey, GridTile> Grid = new Dictionary<TileKey, GridTile>();
 
@@ -63,39 +66,39 @@ public class GridManager : Singleton<GridManager>
         {
             LoadGridFromWorld();
         }
-      //  NavMesh.BuildNavMesh();
+        //  NavMesh.BuildNavMesh();
     }
 
 
     private void Start()
     {
-       // NavMesh.BuildNavMesh();
+        // NavMesh.BuildNavMesh();
     }
 
 
     public void GenerateGrid()
     {
         ClearGrid();
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < gridsize; i++)
         {
-            for (int x = 0; x < 10; x++)
+            for (int x = 0; x < gridsize; x++)
             {
-                TileKey _newKey = new TileKey(x,i); 
-               
+                TileKey _newKey = new TileKey(x, i);
+
                 GridTile _newTile = (GridTile)PrefabUtility.InstantiatePrefab(TilePrefab, transform);
                 _newTile.Init(_newKey);
                 Grid.Add(_newKey, _newTile);
                 _newTile.name = _newKey.X + " " + _newKey.Z;
             }
         }
-        
+
 
         foreach (KeyValuePair<TileKey, GridTile> item in Grid)
         {
             item.Value.SetSurroundingTiles(this);
         }
 
-       // NavMesh.BuildNavMesh();
+        // NavMesh.BuildNavMesh();
     }
 
     public void ClearGrid()
@@ -543,7 +546,7 @@ public class GridManager : Singleton<GridManager>
         _newTile.Init(key);
         Grid.Add(key, _newTile);
         _newTile.UpdateSurroundingTiles(this);
-       // NavMesh.BuildNavMesh();
+        // NavMesh.BuildNavMesh();
         return _newTile;
     }
 

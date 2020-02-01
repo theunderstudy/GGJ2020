@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Character_Toon
   m_Shader: {fileID: 4800000, guid: d38a460006bca42169e31b29d162e446, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: TCP2_NONE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -85,19 +85,19 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineWidth: 1.13
+    - _OutlineWidth: 0.36
     - _Parallax: 0.02
     - _RampSmoothing: 0.1
     - _RampSmoothingOtherLights: 0.5
-    - _RampThreshold: 0.346
+    - _RampThreshold: 0.152
     - _RampThresholdDirectional: 0.787
     - _RampThresholdOtherLights: 0.88
     - _RampThresholdPoint: 0.258
     - _RampThresholdSpot: 0.422
-    - _ReflectionSmoothness: 0.5
-    - _RimMax: 1.38
+    - _ReflectionSmoothness: 0.776
+    - _RimMax: 1.75
     - _RimMaxVert: 1.07
-    - _RimMin: 0.62
+    - _RimMin: 0.78
     - _RimMinVert: 0.46
     - _Shadow_HSV_H: 13
     - _Shadow_HSV_S: -0.19
@@ -110,11 +110,11 @@ Material:
     - _SpecularSmoothness: 0.2
     - _SpecularSmoothnessPBR: 0.442
     - _SpecularToonBands: 3
-    - _SpecularToonSize: 0.181
-    - _SpecularToonSmoothness: 0.342
+    - _SpecularToonSize: 0.134
+    - _SpecularToonSmoothness: 0.107
     - _SrcBlend: 1
     - _SubsurfaceDistortion: 0.2
-    - _SubsurfacePower: 3
+    - _SubsurfacePower: 5.7
     - _SubsurfaceScale: 1
     - _UVSec: 0
     - _ZWrite: 1
@@ -131,9 +131,10 @@ Material:
     - _OutlineColorVertex: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.5}
-    - _RimDir: {r: 0, g: 0, b: -0.09, a: 1}
+    - _RimDir: {r: 0, g: 0, b: 0, a: 1}
     - _RimDirVert: {r: 0, g: 0, b: 1, a: 1}
     - _SColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+    - _SilhouetteColor: {r: 0, g: 0, b: 0, a: 0.33}
     - _SpecularColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _SubsurfaceAmbientColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _SubsurfaceColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

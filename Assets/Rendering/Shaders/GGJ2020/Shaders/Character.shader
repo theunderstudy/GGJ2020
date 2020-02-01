@@ -29,18 +29,9 @@ Shader "GGJ2020/Shaders/Character"
 		//Rim Direction
 		_RimDir ("Rim Direction", Vector) = (0,0,1,1)
 		[TCP2Separator]
-
-		[TCP2HeaderHelp(Reflections)]
-		[TCP2ColorNoAlpha] _ReflectionColor ("Color", Color) = (1,1,1,1)
-		_ReflectionSmoothness ("Smoothness", Range(0,1)) = 0.5
-		[TCP2Separator]
 		
-		[TCP2HeaderHelp(Subsurface Scattering)]
-		_SubsurfaceDistortion ("Distortion", Range(0,2)) = 0.2
-		_SubsurfacePower ("Power", Range(0.1,16)) = 3
-		_SubsurfaceScale ("Scale", Float) = 1
-		[TCP2ColorNoAlpha] _SubsurfaceColor ("Color", Color) = (0.5,0.5,0.5,1)
-		[TCP2ColorNoAlpha] _SubsurfaceAmbientColor ("Ambient Color", Color) = (0.5,0.5,0.5,1)
+		[TCP2HeaderHelp(Silhouette Pass)]
+		_SilhouetteColor ("Silhouette Color", Color) = (0,0,0,0.33)
 		[TCP2Separator]
 		
 		[TCP2HeaderHelp(Outline)]
@@ -60,6 +51,67 @@ Shader "GGJ2020/Shaders/Character"
 		{
 			"RenderType"="Opaque"
 			"Queue"="AlphaTest+25"
+		}
+
+		//Silhouette Pass
+		Pass
+		{
+			Name "Silhouette"
+			Tags { "LightMode"="ForwardBase" }
+			Blend SrcAlpha OneMinusSrcAlpha
+			ZTest Greater
+			ZWrite Off
+
+			CGPROGRAM
+			#pragma vertex vertex_silhouette
+			#pragma fragment fragment_silhouette
+			#pragma target 3.5
+
+			#include "UnityCG.cginc"
+			#include "UnityLightingCommon.cginc"	// needed for LightColor
+
+			struct appdata_sil
+			{
+				float4 vertex : POSITION;
+				UNITY_VERTEX_INPUT_INSTANCE_ID
+			};
+
+			struct v2f_sil
+			{
+				float4 vertex : SV_POSITION;
+				UNITY_VERTEX_OUTPUT_STEREO
+				float4 screenPosition : TEXCOORD0;
+				float4 vcolor : TEXCOORD1;
+				float pack2 : TEXCOORD2; /* pack2.x = ndl */
+			};
+
+			// Shader Properties
+			fixed4 _SilhouetteColor;
+
+			v2f_sil vertex_silhouette (appdata_sil v)
+			{
+				v2f_sil output;
+				UNITY_INITIALIZE_OUTPUT(v2f_sil, output);
+				UNITY_SETUP_INSTANCE_ID(v);
+				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
+
+				output.vertex = UnityObjectToClipPos(v.vertex);
+				float4 clipPos = output.vertex;
+
+				//Screen Position
+				float4 screenPos = ComputeScreenPos(clipPos);
+				output.screenPosition = screenPos;
+				return output;
+			}
+
+			half4 fragment_silhouette (v2f_sil input) : SV_Target
+			{
+				// Shader Properties Sampling
+				float4 __silhouetteColor = ( _SilhouetteColor.rgba );
+
+				return __silhouetteColor;
+			}
+			ENDCG
 		}
 
 		// Outline Include
@@ -94,7 +146,7 @@ Shader "GGJ2020/Shaders/Character"
 			float4 vertex : SV_POSITION;
 			float4 screenPosition : TEXCOORD0;
 			float4 vcolor : TEXCOORD1;
-			float3 pack2 : TEXCOORD2; /* pack2.xyz = normal */
+			float pack2 : TEXCOORD2; /* pack2.x = ndl */
 			UNITY_VERTEX_OUTPUT_STEREO
 		};
 
@@ -110,10 +162,34 @@ Shader "GGJ2020/Shaders/Character"
 			float4 __outlineColorVertex = ( _OutlineColorVertex.rgba );
 
 			float3 objSpaceLight = normalize(mul(unity_WorldToObject, _WorldSpaceLightPos0).xyz);
-			float3 normal = objSpaceLight.xyz;
-			output.pack2.xyz = normalize(mul(unity_ObjectToWorld, v.normal).xyz);
+			half ndl = max(0, dot(v.normal.xyz, objSpaceLight.xyz));
+			output.pack2.x = ndl;
 		
-			float size = 1;
+		#ifdef TCP2_COLORS_AS_NORMALS
+			//Vertex Color for Normals
+			float3 normal = (v.vertexColor.xyz*2) - 1;
+		#elif TCP2_TANGENT_AS_NORMALS
+			//Tangent for Normals
+			float3 normal = v.tangent.xyz;
+		#elif TCP2_UV2_AS_NORMALS
+			//UV2 for Normals
+			float3 n;
+			//unpack uv2
+			v.uv2.x = v.uv2.x * 255.0/16.0;
+			n.x = floor(v.uv2.x) / 15.0;
+			n.y = frac(v.uv2.x) * 16.0 / 15.0;
+			//- get z
+			n.z = v.uv2.y;
+			//- transform
+			n = n*2 - 1;
+			float3 normal = n;
+		#else
+			float3 normal = v.normal;
+		#endif
+		
+			//Camera-independent outline size
+			float dist = distance(_WorldSpaceCameraPos.xyz, mul(unity_ObjectToWorld, v.vertex).xyz);
+			float size = dist;
 		
 		#if !defined(SHADOWCASTER_PASS)
 			output.vertex = UnityObjectToClipPos(v.vertex + float4(normal,0) * __outlineWidth * size * 0.01);
@@ -136,8 +212,7 @@ Shader "GGJ2020/Shaders/Character"
 			float4 __outlineColor = ( float4(1,1,1,1) );
 
 			half4 outlineColor = __outlineColor * input.vcolor.xyzw;
-			half ndl = max(0, dot(input.pack2.xyz, _WorldSpaceLightPos0));
-			outlineColor *= ndl;
+			outlineColor *= input.pack2.x;
 			return outlineColor;
 		}
 
@@ -184,13 +259,6 @@ Shader "GGJ2020/Shaders/Character"
 		float _RimMin;
 		float _RimMax;
 		fixed3 _RimColor;
-		float _SubsurfaceDistortion;
-		float _SubsurfacePower;
-		float _SubsurfaceScale;
-		fixed3 _SubsurfaceColor;
-		fixed3 _SubsurfaceAmbientColor;
-		fixed3 _ReflectionColor;
-		float _ReflectionSmoothness;
 
 		//Vertex input
 		struct appdata_tcp2
@@ -249,6 +317,7 @@ Shader "GGJ2020/Shaders/Character"
 			
 			// Shader Properties
 			float __rampThreshold;
+			float __rampCrispSmoothing;
 			float3 __highlightColor;
 			float3 __shadowColor;
 			float __occlusion;
@@ -261,14 +330,6 @@ Shader "GGJ2020/Shaders/Character"
 			float __rimMax;
 			float3 __rimColor;
 			float __rimStrength;
-			float __subsurfaceDistortion;
-			float __subsurfacePower;
-			float __subsurfaceScale;
-			float3 __subsurfaceColor;
-			float3 __subsurfaceAmbientColor;
-			float __subsurfaceThickness;
-			float3 __reflectionColor;
-			float __reflectionSmoothness;
 		};
 
 		//================================================================
@@ -281,6 +342,7 @@ Shader "GGJ2020/Shaders/Character"
 			float4 __mainColor = ( _Color.rgba );
 			float __alpha = ( __albedo.a * __mainColor.a );
 			output.__rampThreshold = ( _RampThreshold );
+			output.__rampCrispSmoothing = ( 1.0 );
 			output.__highlightColor = ( _HColor.rgb );
 			output.__shadowColor = ( _SColor.rgb );
 			output.__occlusion = ( __albedo.a );
@@ -293,14 +355,6 @@ Shader "GGJ2020/Shaders/Character"
 			output.__rimMax = ( _RimMax );
 			output.__rimColor = ( _RimColor.rgb );
 			output.__rimStrength = ( 1.0 );
-			output.__subsurfaceDistortion = ( _SubsurfaceDistortion );
-			output.__subsurfacePower = ( _SubsurfacePower );
-			output.__subsurfaceScale = ( _SubsurfaceScale );
-			output.__subsurfaceColor = ( _SubsurfaceColor.rgb );
-			output.__subsurfaceAmbientColor = ( _SubsurfaceAmbientColor.rgb );
-			output.__subsurfaceThickness = ( 1.0 );
-			output.__reflectionColor = ( _ReflectionColor.rgb );
-			output.__reflectionSmoothness = ( _ReflectionSmoothness );
 
 			output.input = input;
 
@@ -330,7 +384,9 @@ Shader "GGJ2020/Shaders/Character"
 			half3 ramp;
 			#define		RAMP_THRESHOLD	surface.__rampThreshold
 			ndl = saturate(ndl);
-			ramp = step(RAMP_THRESHOLD, ndl);
+			float gradientLength = fwidth(ndl);
+			float thresholdWidth = surface.__rampCrispSmoothing * gradientLength;
+			ramp = smoothstep(RAMP_THRESHOLD - thresholdWidth, RAMP_THRESHOLD + thresholdWidth, ndl);
 			half3 rampGrayscale = ramp;
 
 			//Apply attenuation (shadowmaps & point/spot lights attenuation)
@@ -379,25 +435,6 @@ Shader "GGJ2020/Shaders/Character"
 			half rimStrength = surface.__rimStrength;
 			//Rim light mask
 			color.rgb += ndl * atten * rim * rimColor * rimStrength;
-			
-				//Subsurface Scattering
-			#if (POINT || SPOT)
-				half3 ssLight = lightDir + normal * surface.__subsurfaceDistortion;
-				half ssDot = pow(saturate(dot(viewDir, -ssLight)), surface.__subsurfacePower) * surface.__subsurfaceScale;
-				half3 ssColor = ((ssDot * surface.__subsurfaceColor) + surface.__subsurfaceAmbientColor) * surface.__subsurfaceThickness;
-			#if !defined(UNITY_PASS_FORWARDBASE)
-				ssColor *= atten;
-			#endif
-				ssColor *= lightColor;
-				color.rgb *= surface.Albedo * ssColor;
-			#endif
-			// ForwardBase pass only
-			#if defined(UNITY_PASS_FORWARDBASE)
-
-			//Reflection probes/skybox
-			half3 reflections = gi.indirect.specular * occlusion * surface.__reflectionColor;
-			color.rgb += reflections;
-			#endif
 			return color;
 		}
 
@@ -405,10 +442,8 @@ Shader "GGJ2020/Shaders/Character"
 		{
 			half3 normal = surface.Normal;
 
-			//GI with reflection probes support
-			half smoothness = surface.__reflectionSmoothness;
-			Unity_GlossyEnvironmentData g = UnityGlossyEnvironmentSetup(smoothness, data.worldViewDir, normal, half3(0,0,0));	// last parameter is actually unused
-			gi = UnityGlobalIllumination(data, 1.0, normal, g); // occlusion is applied in the lighting function, if necessary
+			//GI without reflection probes
+			gi = UnityGlobalIllumination(data, 1.0, normal); // occlusion is applied in the lighting function, if necessary
 
 			surface.atten = data.atten; // transfer attenuation to lighting function
 			gi.light.color = _LightColor0.rgb; // remove attenuation
@@ -416,11 +451,30 @@ Shader "GGJ2020/Shaders/Character"
 
 		ENDCG
 
+		//Outline - Depth Pass Only
+		Pass
+		{
+			Name "Outline Depth"
+			Tags { "LightMode"="ForwardBase" }
+			Cull Off
+
+			//Write to Depth Buffer only
+			ColorMask 0
+			ZWrite On
+
+			CGPROGRAM
+			#pragma vertex vertex_outline
+			#pragma fragment fragment_outline
+			#pragma multi_compile TCP2_NONE TCP2_COLORS_AS_NORMALS TCP2_TANGENT_AS_NORMALS TCP2_UV2_AS_NORMALS
+			#pragma multi_compile_instancing
+			#pragma target 3.5
+			ENDCG
+		}
 	}
 
 	Fallback "Diffuse"
 	CustomEditor "ToonyColorsPro.ShaderGenerator.MaterialInspector_SG2"
 }
 
-/* TCP_DATA u config(ver:"2.4.2";tmplt:"SG2_Template_Default";features:list["UNITY_5_4","UNITY_5_5","UNITY_5_6","UNITY_2017_1","UNITY_2018_1","UNITY_2018_2","UNITY_2018_3","UNITY_2019_1","UNITY_2019_2","UNITY_2019_3","SPECULAR","SPECULAR_NO_ATTEN","RIM","RIM_DIR_PERSP_CORRECTION","RIM_LIGHTMASK","MATCAP_PERSPECTIVE_CORRECTION","OCCLUSION","OUTLINE","OUTLINE_BEHIND_DEPTH","OUTLINE_LIGHTING_FRAG","OUTLINE_LIGHTING","SKETCH_AMBIENT","ENABLE_LIGHTMAPS","CRISP_RAMP_NO_AA","SPEC_LEGACY","SPECULAR_TOON","OUTLINE_FAKE_RIM_DIRLIGHT","TT_SHADER_FEATURE","RIM_DIR","GLOSSY_REFLECTIONS","SUBSURFACE_SCATTERING","SS_MULTIPLICATIVE","SUBSURFACE_AMB_COLOR"];flags:list["addshadow"];keywords:dict[RENDER_TYPE="Opaque",RampTextureDrawer="[TCP2Gradient]",RampTextureLabel="Ramp Texture",SHADER_TARGET="3.5",RIM_LABEL="Rim Lighting"];shaderProperties:list[];customTextures:list[]) */
-/* TCP_HASH 153000ceba818fc2808638370da7134a */
+/* TCP_DATA u config(ver:"2.4.2";tmplt:"SG2_Template_Default";features:list["UNITY_5_4","UNITY_5_5","UNITY_5_6","UNITY_2017_1","UNITY_2018_1","UNITY_2018_2","UNITY_2018_3","UNITY_2019_1","UNITY_2019_2","UNITY_2019_3","SPECULAR","SPECULAR_NO_ATTEN","RIM","RIM_DIR_PERSP_CORRECTION","RIM_LIGHTMASK","MATCAP_PERSPECTIVE_CORRECTION","OCCLUSION","OUTLINE","OUTLINE_BEHIND_DEPTH","SKETCH_AMBIENT","ENABLE_LIGHTMAPS","SPEC_LEGACY","SPECULAR_TOON","TT_SHADER_FEATURE","RIM_DIR","SS_MULTIPLICATIVE","SUBSURFACE_AMB_COLOR","OUTLINE_CONSTANT_SIZE","OUTLINE_DEPTH","PASS_SILHOUETTE","OUTLINE_LIGHTING_VERT","OUTLINE_LIGHTING","CRISP_RAMP"];flags:list["addshadow"];keywords:dict[RENDER_TYPE="Opaque",RampTextureDrawer="[TCP2Gradient]",RampTextureLabel="Ramp Texture",SHADER_TARGET="3.5",RIM_LABEL="Rim Lighting"];shaderProperties:list[];customTextures:list[]) */
+/* TCP_HASH e55bb0e790b04c86f257317a0f213ae1 */
