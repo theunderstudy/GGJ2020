@@ -14,9 +14,9 @@ public class WaterAction : PlayerAction
                 if (_newTile.Upgrade.CanWater())
                 {
                     _newTile.Upgrade.WaterTile();
-
+                    _newTile.MoveTileVerticallyOverTime(0, 0.2f);
                     PlayerController.Instance.StartWork(_newTile.transform.position, 1f);
-                }              
+                }
             }
         }
     }
@@ -59,5 +59,19 @@ public class WaterAction : PlayerAction
         {
             m_SelectedTile = null;
         }
+    }
+
+    public override bool CanUpgrade(UpgradeTypes upgradeType)
+    {
+        GridTile _newTile = MouseInput.GetTileAtMousePosition();
+        if (_newTile != null)
+        {
+            if (_newTile.Upgrade)
+            {
+                return _newTile.Upgrade.CanWater();
+
+            }
+        }
+        return base.CanUpgrade(upgradeType);
     }
 }

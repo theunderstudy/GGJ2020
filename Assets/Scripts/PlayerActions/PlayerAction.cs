@@ -42,7 +42,7 @@ public class PlayerAction : MonoBehaviour
             {
                 _newTile.UpgradeTile(UpgradeToPlace);
 
-
+                m_SelectedTile.MoveTileVerticallyOverTime(0, 0.2f);
                 PlayerController.Instance.StartWork(_newTile.transform.position, 1f);
             }
         }
@@ -88,7 +88,7 @@ public class PlayerAction : MonoBehaviour
         }
     }
 
-    protected bool CanUpgrade(UpgradeTypes upgradeType)
+    public virtual bool CanUpgrade(UpgradeTypes upgradeType)
     {
        
         for (int i = 0; i < AffectedTypes.Length; i++)
@@ -102,7 +102,7 @@ public class PlayerAction : MonoBehaviour
     }
 
 
-    protected bool CanWorkTile(GridTile _tile)
+    public bool CanWorkTile(GridTile _tile)
     {
         if (_tile == PlayerController.Instance.CurrentTile )
         {
@@ -121,7 +121,6 @@ public class PlayerAction : MonoBehaviour
         {
             return true;
         }
-
         return false;
     }
 
