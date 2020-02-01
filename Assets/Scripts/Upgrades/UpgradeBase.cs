@@ -15,11 +15,17 @@ public abstract class UpgradeBase : MonoBehaviour
         ParentTile = tile;
         SetPositioning(tile.transform);
         SetupTileForUpgrade();
+        SetupFreshUpgrade();
     }
     public virtual void RemoveFromTile(GridTile tile)
     {
         ResetTileFromUpgrade();
     }
+    protected virtual void SetupFreshUpgrade()
+    {
+
+    }
+
     protected virtual void SetupTileForUpgrade()
     {
 
@@ -36,4 +42,15 @@ public abstract class UpgradeBase : MonoBehaviour
     }
     public abstract void ResetUpgrade();
 
+    public abstract void StartNewDay(EWeather newWeather);
+
+    private void OnEnable()
+    {
+        DayNightManager.NewDayEvent += StartNewDay;
+    }
+    private void OnDisable()
+    {
+        DayNightManager.NewDayEvent -= StartNewDay;
+
+    }
 }
