@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     // Start is called before the first frame update
 
@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     private Dictionary<KeyCode, Vector3> movement;
     private Dictionary< HashSet<KeyCode>, Vector3> rotationTargets;
     
-    private bool performRotation = false;
     public float speed = 1.0f;
     public float rotationSpeed = 45.0f; // 45 degrees per tick?
 
@@ -19,10 +18,9 @@ public class PlayerController : MonoBehaviour
     public Vector3 defaultRotation = new Vector3(0f,0f,0f);
 
     private bool continueRotate = false;
-    public Vector3 counterclockwise = new Vector3(0f, -1f, 0f);
-    public Vector3 clockwise = new Vector3(0f, 1f, 0f);
     public Vector3 rotationTarget;
     private Vector3 absoluteTarget;
+
     void Start()
     {
         // playerObject = GameObject.Find("PlayerTestObject");
@@ -37,7 +35,8 @@ public class PlayerController : MonoBehaviour
         movement.Add(KeyCode.S, Vector3.back);
         movement.Add(KeyCode.D, Vector3.right);
 
-        rotationTargets = new Dictionary<HashSet<KeyCode>, Vector3>(HashSet<KeyCode>.CreateSetComparer());
+        rotationTargets = new Dictionary<HashSet<KeyCode>, Vector3>(
+            HashSet<KeyCode>.CreateSetComparer());
 
         // Normal WASD
 
@@ -73,12 +72,42 @@ public class PlayerController : MonoBehaviour
     {
         HashSet<KeyCode> usedKeys = new HashSet<KeyCode>();
 
-        foreach (var k in movement) {
-            if (Input.GetKey(k.Key)) {
-                transform.Translate((k.Value * Time.deltaTime) * speed, ground.transform);
-                usedKeys.Add(k.Key);
-            }
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        Debug.Log("Horizontal" + horizontal);
+        Debug.Log("Vertical" + vertical);
+
+        // I don't feel good about this but it'll work
+        // possibly?
+
+        
+
+        if ( horizontal > 0 && horizontal <= 1 ) {
+            usedKeys.Add(KeyCode.D);
         }
+        if (horizontal < 0 && horizontal >= -1) {
+            usedKeys.Add(KeyCode.A);
+        }
+        if (vertical > 0 && vertical <= 1) {
+            usedKeys.Add(KeyCode.W);
+        }
+        if (vertical < 0 && vertical >= -1) {
+            usedKeys.Add(KeyCode.S);
+        }
+
+        foreach (var k in usedKeys) {
+            Vector3 direction;
+            movement.TryGetValue(k, out direction);
+            transform.Translate((direction * Time.deltaTime) * speed, ground.transform);
+        }
+
+        // foreach (var k in movement) {
+        //     if (Input.GetKey(k.Key)) {
+        //         transform.Translate((k.Value * Time.deltaTime) * speed, ground.transform);
+        //         usedKeys.Add(k.Key);
+        //     }
+        // }
         // Okay we have KEYS and A LOOKUP TABLE
         // WOO
         
@@ -113,7 +142,6 @@ public class PlayerController : MonoBehaviour
                 currentEuler = absoluteTarget;
             }
             else {
-                Debug.Log("rotate?");
                 // Hardcoding rotational axis, for now
 
                 currentEuler = Vector3.RotateTowards(currentEuler, rotationTarget, 1, rotationSpeed);
