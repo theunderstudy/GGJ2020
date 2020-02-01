@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 543454397503445976}
   - component: {fileID: 730381322286228874}
   - component: {fileID: 3732517435977323183}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,8 @@ MonoBehaviour:
     X: 0
     Z: 0
   Upgrade: {fileID: 0}
-  TileRenderers: []
+  TileRenderers:
+  - {fileID: 543454397503445976}
   UpgradeType: 1
   f: 0
   h: 0

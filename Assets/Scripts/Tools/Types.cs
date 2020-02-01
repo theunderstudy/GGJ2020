@@ -132,6 +132,8 @@ public enum UpgradeTypes
 
     windmill,
 
+    water,
+
 }
 
 
