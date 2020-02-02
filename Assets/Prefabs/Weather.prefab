@@ -56,6 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3070794356856898615}
   - component: {fileID: 3070794356856898612}
+  - component: {fileID: 7974188227227642963}
   m_Layer: 0
   m_Name: Thunderstorm
   m_TagString: Untagged
@@ -93,6 +94,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   condition: 0
   skyColor: {r: 0.07903168, g: 0.2470153, b: 0.4528302, a: 0}
+--- !u!114 &7974188227227642963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070794356856898614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
 --- !u!1 &3070794356863984791
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,6 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3070794357418791950}
   - component: {fileID: 3070794357418791951}
+  - component: {fileID: 5991398860293875010}
   m_Layer: 0
   m_Name: Drizzle
   m_TagString: Untagged
@@ -185,6 +210,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   condition: 1
   skyColor: {r: 0.7792809, g: 0.808648, b: 0.8301887, a: 0}
+--- !u!114 &5991398860293875010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070794357418791945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
 --- !u!1 &3070794357939301041
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3070794358310535132}
   - component: {fileID: 3070794358310535133}
+  - component: {fileID: 8922155668442282978}
   m_Layer: 0
   m_Name: Rain
   m_TagString: Untagged
@@ -277,6 +326,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   condition: 2
   skyColor: {r: 0, g: 0.33770072, b: 0.8962264, a: 0}
+--- !u!114 &8922155668442282978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070794358310535135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
 --- !u!1 &3070794358321880863
 GameObject:
   m_ObjectHideFlags: 0
