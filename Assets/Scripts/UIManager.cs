@@ -9,6 +9,8 @@ public class UIManager : Singleton<UIManager>
     public ImageButton NewDayButton;
     public Image EnergyFill;
     private PlayerController Player;
+
+    public GameObject[] GameUIToEnable;
     private void Start()
     {
         Player = PlayerController.Instance;
@@ -40,5 +42,12 @@ public class UIManager : Singleton<UIManager>
     private void Update()
     {
         EnergyFill.fillAmount =(float) Player.Energy / Player.MaxEnergy;
+    }
+    public void EnableGameUI()
+    {
+        for (int i = 0; i < GameUIToEnable.Length; i++)
+        {
+            GameUIToEnable[i].SetActive(true);
+        }
     }
 }

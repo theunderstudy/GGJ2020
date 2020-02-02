@@ -32,7 +32,9 @@ public class PlayerController : Singleton<PlayerController>
 
     public GridTile CurrentTile;
 
-    
+    public delegate void EnergyUpdated(float newPercent);
+    public static event EnergyUpdated EnergyUpdatedEvent;
+
     [EventRef]
     public string TreadFX;
 
@@ -236,6 +238,7 @@ public class PlayerController : Singleton<PlayerController>
         }
         Energy -= 10;
         bWorking = true;
+        EnergyUpdatedEvent?.Invoke((float)Energy / MaxEnergy);
         StartCoroutine(WorkRoutine(workTime));
 
     }

@@ -36,7 +36,6 @@ public class TreeUpgrade : UpgradeBase
         {
             // play some leaf particle
             Debug.Log( gameObject.name + " full grown");
-
         }
         bWatered = false;
 
@@ -62,5 +61,26 @@ public class TreeUpgrade : UpgradeBase
 
     public override void StartNewDay(EWeather newWeather)
     {
+        switch (newWeather)
+        {
+            case EWeather.Thunderstorm:
+                goto case EWeather.Rain;
+            case EWeather.Drizzle:
+                goto case EWeather.Rain;
+            case EWeather.Rain:
+                WaterTile();
+                break;
+            case EWeather.Snow:
+                goto case EWeather.Rain;
+            case EWeather.Fog:
+                break;
+            case EWeather.Clear:
+                break;
+            case EWeather.Clouds:
+                break;
+            default:
+                break;
+        }
+        
     }
 }

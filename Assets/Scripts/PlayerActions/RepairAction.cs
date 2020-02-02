@@ -5,32 +5,36 @@ using UnityEngine;
 public class RepairAction : PlayerAction
 {
     public int WoodCost = 5;
+
+
+    public delegate void WindmillFixed();
+    public static event WindmillFixed WindMillFixedEvent;
+
     public override void MouseDown()
     {
         GridTile _newTile = MouseInput.GetTileAtMousePosition();
         if (_newTile != null)
         {
-            if (!CanWorkTile(_newTile))
+            _newTile.MoveTileVerticallyOverTime(0, 0.2f);
+            PlayerController.Instance.StartWork(_newTile.transform.position, 5f);
+            if (_newTile.Upgrade)
             {
-                return;
+                WindmillUpgrade _windmill = (WindmillUpgrade)_newTile.Upgrade;
+                if (_windmill.bUpgraded == false)
+                {
+
+
+                    _windmill.bUpgraded = true;
+
+
+                    _windmill.FixedWindmill.SetActive(true);
+                    _windmill.BrokeWindmill.SetActive(false);
+                    WindMillFixedEvent?.Invoke();
+                    WindMillFixedEvent();
+
+                }
             }
 
-            if (WoodCost > ObjectPool.Instance.WoodCount)
-            {
-                return;
-            }
-                TreeUpgrade _treeUpgrade = (TreeUpgrade)_newTile.Upgrade;
-
-              
-                    _newTile.UpgradeTile(UpgradeToPlace);
-
-                    ObjectPool.Instance.WoodCount -= WoodCost;
-                    _newTile.MoveTileVerticallyOverTime(0, 0.2f);
-                    PlayerController.Instance.StartWork(_newTile.transform.position, 1f);
-
-                
-
-            
         }
     }
 
