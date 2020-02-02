@@ -59,6 +59,25 @@ public class GrassUpgrade : UpgradeBase
 
     public override void StartNewDay(EWeather newWeather)
     {
-      
+        switch (newWeather)
+        {
+            case EWeather.Thunderstorm:
+                goto case EWeather.Rain;
+            case EWeather.Drizzle:
+                goto case EWeather.Rain;
+            case EWeather.Rain:
+                WaterTile();
+                break;
+            case EWeather.Snow:
+                goto case EWeather.Rain;
+            case EWeather.Fog:
+                break;
+            case EWeather.Clear:
+                break;
+            case EWeather.Clouds:
+                break;
+            default:
+                break;
+        }
     }
 }

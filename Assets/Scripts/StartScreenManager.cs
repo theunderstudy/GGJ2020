@@ -14,8 +14,19 @@ public class StartScreenManager : MonoBehaviour
     private bool doFade = false;
     void Start()
     {
+       
+    }
+
+    private void OnEnable()
+    {
         GameStartEvent += () => { Debug.Log("Received gamestart event"); };
         GameStartEvent += this.startTutorial;
+    }
+
+    private void OnDisable()
+    {
+        GameStartEvent -= () => { Debug.Log("Received gamestart event"); };
+        GameStartEvent -= this.startTutorial;
     }
     // Update is called once per frame
     void Update()
@@ -37,13 +48,18 @@ public class StartScreenManager : MonoBehaviour
     public void startGame() {
         Debug.Log("clicking startgame");
         doFade = true;
+        // just chucking this here
+        startTutorial();
     }
 
     public void quitGame() {
         Application.Quit();
     }
 
-    private void startTutorial() {
+    private void startTutorial()    
+    {
+
+        UIManager.Instance.EnableGameUI();
         Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "Hello! This is [ROBOTNAME].", 2);
         Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "They like to fix things.", 2);
         Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "Say, that windmill over there looks to be in bad shape.", 3);
