@@ -16,19 +16,21 @@ public class RepairAction : PlayerAction
         if (_newTile != null)
         {
             _newTile.MoveTileVerticallyOverTime(0, 0.2f);
-            PlayerController.Instance.StartWork(_newTile, 5f);
+           
             if (_newTile.Upgrade)
             {
                 WindmillUpgrade _windmill = (WindmillUpgrade)_newTile.Upgrade;
                 if (_windmill.bUpgraded == false)
                 {
+                    PlayerController.Instance.StartWork(_newTile, 5f);
 
                     _windmill.bUpgraded = true;
+
 
                     _windmill.FixedWindmill.SetActive(true);
                     _windmill.BrokeWindmill.SetActive(false);
                     WindMillFixedEvent?.Invoke();
-                    WindMillFixedEvent();
+
 
                 }
             }
