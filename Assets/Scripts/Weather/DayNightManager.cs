@@ -9,18 +9,16 @@ public class DayNightManager : Singleton<DayNightManager>
     public static event NewDay NewDayEvent;
     public int CurrentDay = 1;
 
-
     public void EndDay()
     {
-        EWeather _currentWeather = EWeather.Clear;
-
-        EndDayEvent?.Invoke(_currentWeather);
+        EndDayEvent?.Invoke(LocalWeather.Instance.currentWeather);
     }
     public void StartNewDay()
     {
-        EWeather _currentWeather = EWeather.Clear;
+        EWeather randomWeather = (EWeather) Random.Range(0, 7);
+        LocalWeather.Instance.SetWeather(randomWeather);
         CurrentDay += 1;
         Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "𝅘𝅥𝅮 fully charged beep 𝅘𝅥𝅮");
-        NewDayEvent?.Invoke(_currentWeather);
+        NewDayEvent?.Invoke(randomWeather);
     }
 }
