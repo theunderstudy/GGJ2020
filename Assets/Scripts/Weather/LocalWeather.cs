@@ -7,28 +7,24 @@ public class LocalWeather : MonoBehaviour
 {
     public EWeather currentWeather;
     public WeatherCondition currentWeatherCondition;
-    public WeatherCondition[] supportedWeatherConditions;
 
     private void Start()
     {
-        StartCoroutine(GetWeather());
+        // StartCoroutine(GetWeather());
+        transform.parent= Camera.main.transform;
+        transform.localPosition = Vector3.zero;
+        SetWeather(EWeather.Clouds);
     }
 
     private void SetWeather(EWeather newWeather) {
-        Debug.Log("Set Weather called with" + newWeather.ToString());
-        foreach (var weatherCondition in supportedWeatherConditions)
+        WeatherCondition[] supportedWeatherConditions = GetComponentsInChildren<WeatherCondition>(true);
+        foreach (WeatherCondition supportedWeatherCondition in supportedWeatherConditions)
         {
-            weatherCondition.gameObject.SetActive(false);
-            if (weatherCondition.condition == newWeather)
-            {
-                currentWeatherCondition = weatherCondition;
-                weatherCondition.gameObject.SetActive(true);
-            }
+            bool isNewWeather = newWeather.Equals(supportedWeatherCondition.condition);
+            if (isNewWeather) currentWeatherCondition = supportedWeatherCondition;
+            supportedWeatherCondition.SetEnabled(isNewWeather, Camera.main.transform);
         }
         currentWeather = newWeather;
-        RenderSettings.skybox = currentWeatherCondition.skybox;
-
-        currentWeatherCondition.IntializeWeather(Camera.main.transform);
     }
     IEnumerator GetWeather()
     {
