@@ -15,6 +15,7 @@ public class StartScreenManager : MonoBehaviour
     void Start()
     {
         GameStartEvent += () => { Debug.Log("Received gamestart event"); };
+        GameStartEvent += this.startTutorial;
     }
     // Update is called once per frame
     void Update()
@@ -40,5 +41,16 @@ public class StartScreenManager : MonoBehaviour
 
     public void quitGame() {
         Application.Quit();
+    }
+
+    private void startTutorial() {
+        Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "Hello! This is [ROBOTNAME].", 2);
+        Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "They like to fix things.", 2);
+        Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "Say, that windmill over there looks to be in bad shape.", 3);
+        Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "Press [BUTTON] to interact with the windmill.", 4);
+        Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "Why not head over?", 2);
+        Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "Use the [W][↑], [A][←], [S][↓], and [D][→] keys to move around.", 5);
+        Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "Clean and repair items on more tiles to clear the dust.", 3);
+        Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "As you progress, you’ll also gain access to saplings and sprinkler systems that can help keep the dust at bay.", 5);
     }
 }

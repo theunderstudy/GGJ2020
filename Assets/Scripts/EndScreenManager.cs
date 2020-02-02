@@ -41,6 +41,7 @@ public class EndScreenManager : MonoBehaviour
     }
 
     public void quitGame() {
+        Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "𝅘𝅥𝅮 sad robot noises 𝅘𝅥𝅮");
         Application.Quit();
     }
 }

@@ -18,7 +18,7 @@ public class BuildAction : PlayerAction
     {
         base.MouseDown();
         ObjectPool.Instance.WoodCount -= BuildingCost;
-
+        Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "𝅘𝅥𝅮 happy robot noises 𝅘𝅥𝅮");
     }
 
     public override void MousePositionUpdated()
