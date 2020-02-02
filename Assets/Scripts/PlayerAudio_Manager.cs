@@ -14,4 +14,10 @@ public class PlayerAudio_Manager : Singleton<PlayerAudio_Manager>
         RuntimeManager.PlayOneShot(botNoises.Find(sfx => sfx.Contains(botsfx)), transform.position);
     }
 
+    public void BotChargeLevel()
+    {
+
+
+    }
+
 }
