@@ -60,6 +60,69 @@ MonoBehaviour:
   - Name: Desktop
     Value: 688
   Exists: 1
+--- !u!114 &-2509914819613313574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Background Music
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Background Music
+  guid: 36e03fb2a95dd5489361673ab6805dcc
+  Banks:
+  - {fileID: 2175847885225567389}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 76800
+--- !u!114 &-1414928501740846097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: /Users/patrick/Documents/ActiveGameProjects/GGJ2020/Assets/Audio/GGJ2020_SoundDesign/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637162452160000000
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1019328
+  Exists: 1
+--- !u!114 &-1327220136081331837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: /Users/patrick/Documents/ActiveGameProjects/GGJ2020/Assets/Audio/GGJ2020_SoundDesign/Build/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637162452160000000
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 748
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,15 +136,16 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 2282517929643643491}
-  - {fileID: 6905978750046421149}
-  EditorEvents: []
+  - {fileID: 5830984155778525764}
+  - {fileID: 2175847885225567389}
+  EditorEvents:
+  - {fileID: -2509914819613313574}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 6905978750046421149}
+  - {fileID: 2175847885225567389}
   StringsBanks:
-  - {fileID: 2282517929643643491}
-  stringsBankWriteTime: 637161769540000000
+  - {fileID: 5830984155778525764}
+  stringsBankWriteTime: 637162452160000000
   cacheVersion: 3
 --- !u!114 &2163239511491591979
 MonoBehaviour:
@@ -102,6 +166,26 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 688
+  Exists: 1
+--- !u!114 &2175847885225567389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: /Users/patrick/Documents/ActiveGameProjects/GGJ2020/Assets/Audio/GGJ2020_SoundDesign/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637162452160000000
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1019328
   Exists: 1
 --- !u!114 &2282517929643643491
 MonoBehaviour:
@@ -143,6 +227,49 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1000
   Exists: 1
+--- !u!114 &5830984155778525764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: /Users/patrick/Documents/ActiveGameProjects/GGJ2020/Assets/Audio/GGJ2020_SoundDesign/Build/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637162452160000000
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 748
+  Exists: 1
+--- !u!114 &6060433950846521388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Background Music
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Background Music
+  guid: 36e03fb2a95dd5489361673ab6805dcc
+  Banks:
+  - {fileID: -1414928501740846097}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 76800
 --- !u!114 &6905978750046421149
 MonoBehaviour:
   m_ObjectHideFlags: 0
