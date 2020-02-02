@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3911067494467331181}
   - component: {fileID: 1569885938545766392}
   - component: {fileID: 1438719580038454150}
+  - component: {fileID: 8331381385375196063}
   m_Layer: 0
   m_Name: Player_Character
   m_TagString: Player
@@ -76,12 +77,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7dfb67cb27e4375bd852d9fa075440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ground: {fileID: 0}
   speed: 1
   rotationSpeed: 45
   defaultRotation: {x: 0, y: 0, z: 0}
-  counterclockwise: {x: 0, y: -1, z: 0}
-  clockwise: {x: 0, y: 1, z: 0}
   rotationTarget: {x: 0, y: 0, z: 0}
+  Energy: 100
+  MaxEnergy: 100
+  bWorking: 0
+  WorkParticles: {fileID: 0}
+  CurrentTile: {fileID: 0}
 --- !u!95 &1438719580038454150
 Animator:
   serializedVersion: 3
@@ -101,6 +106,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8331381385375196063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730149545854096099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8e3e03589614d369ac752961d26153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  botNoises: []
 --- !u!1001 &5009778308177493112
 PrefabInstance:
   m_ObjectHideFlags: 0

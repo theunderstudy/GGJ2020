@@ -8,11 +8,12 @@ public class BuildAction : PlayerAction
     public override bool CanSelectAction()
     {
         if (ObjectPool.Instance.WoodCount < BuildingCost)
-        {
+        { 
             return true;
         }
         return base.CanSelectAction();
     }
+
     public override void MouseDown()
     {
         base.MouseDown();

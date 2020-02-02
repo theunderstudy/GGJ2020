@@ -135,6 +135,8 @@ public enum UpgradeTypes
 
     water,
 
+    sprinkler,
+
 }
 
 
