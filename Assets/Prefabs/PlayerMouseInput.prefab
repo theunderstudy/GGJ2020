@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpgradeToPlace: 3
-  AffectedTypes: 03000000
+  AffectedTypes: 02000000
 --- !u!1 &2527656245650447703
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +612,52 @@ Transform:
   m_Father: {fileID: 2679128424950855479}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3945376955712397522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3934692787622182728}
+  - component: {fileID: 3751786213889735767}
+  m_Layer: 0
+  m_Name: BuildSprinkler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3934692787622182728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945376955712397522}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7390374628868368423}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3751786213889735767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945376955712397522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12b6e896c5cdc946b3b5e1de9fd87bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeToPlace: 7
+  AffectedTypes: 0200000001000000
+  BuildingCost: 3
 --- !u!1 &4219108304771745457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,6 +1218,7 @@ Transform:
   - {fileID: 8383571696223565508}
   - {fileID: 2596488053617326152}
   - {fileID: 2679128424950855479}
+  - {fileID: 3934692787622182728}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1192,6 +1239,7 @@ MonoBehaviour:
   - {fileID: 2641933132639385370}
   - {fileID: 4364212338213035222}
   - {fileID: 4207650995981902733}
+  - {fileID: 3751786213889735767}
   GridHighlights:
   - {fileID: 3824657784573483480}
   - {fileID: 4776548823398421306}
@@ -1292,7 +1340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpgradeToPlace: 1
-  AffectedTypes: 
+  AffectedTypes: 03000000
   WoodPerTree: 2
 --- !u!1 &7537855376957050756
 GameObject:
@@ -1493,7 +1541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpgradeToPlace: 0
-  AffectedTypes: 
+  AffectedTypes: 0200000003000000
 --- !u!1 &8637142492795716162
 GameObject:
   m_ObjectHideFlags: 0
