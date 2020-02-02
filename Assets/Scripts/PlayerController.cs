@@ -41,7 +41,7 @@ public class PlayerController : Singleton<PlayerController>
     protected override void Awake()
     {
         base.Awake();
-      
+
     }
     void Start()
     {
@@ -205,6 +205,7 @@ public class PlayerController : Singleton<PlayerController>
     private void OnEnable()
     {
         DayNightManager.EndDayEvent += StartNewDay;
+        EnergyUpdatedEvent += checkLowEnergyWarnings;
     }
     private void OnDisable()
     {
@@ -241,6 +242,11 @@ public class PlayerController : Singleton<PlayerController>
         EnergyUpdatedEvent?.Invoke((float)Energy / MaxEnergy);
         StartCoroutine(WorkRoutine(workTime));
 
+    }
+
+    private void checkLowEnergyWarnings(float newPercent) {
+        if (newPercent > 0.2 && newPercent <= 0.5) Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "𝅘𝅥𝅮 low battery warning beep 𝅘𝅥𝅮", 2);
+        if (newPercent <= 0.2) Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "𝅘𝅥𝅮 low battery urgent beep 𝅘𝅥𝅮", 2);
     }
 
     IEnumerator WorkRoutine(float workTime)

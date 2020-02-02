@@ -30,6 +30,7 @@ public class RepairAction : PlayerAction
                     _windmill.FixedWindmill.SetActive(true);
                     _windmill.BrokeWindmill.SetActive(false);
                     WindMillFixedEvent?.Invoke();
+                    Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "Lovely! The windmill is all shiny and new again. And look, you’ve cleared the dust clouds away from the nearby tiles.", 6);
                     WindMillFixedEvent();
 
                 }
