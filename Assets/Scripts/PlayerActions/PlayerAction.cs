@@ -44,6 +44,8 @@ public class PlayerAction : MonoBehaviour
 
                 m_SelectedTile.MoveTileVerticallyOverTime(0, 0.2f);
                 PlayerController.Instance.StartWork(_newTile.transform.position, 1f);
+
+
             }
         }
     }
