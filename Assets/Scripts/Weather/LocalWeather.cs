@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using Newtonsoft.Json.Linq;
 
-public class LocalWeather : MonoBehaviour
+public class LocalWeather : Singleton<LocalWeather>
 {
     public EWeather currentWeather;
     public WeatherCondition currentWeatherCondition;
@@ -17,7 +17,7 @@ public class LocalWeather : MonoBehaviour
         SetWeather(EWeather.Snow);
     }
 
-    private void SetWeather(EWeather newWeather) {
+    public void SetWeather(EWeather newWeather) {
         WeatherCondition[] supportedWeatherConditions = GetComponentsInChildren<WeatherCondition>(true);
         foreach (WeatherCondition supportedWeatherCondition in supportedWeatherConditions)
         {
