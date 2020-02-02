@@ -10,11 +10,11 @@ public class LocalWeather : Singleton<LocalWeather>
 
     private void Start()
     {
-       // StartCoroutine(GetWeather());
         transform.parent = Camera.main.transform;
         transform.localPosition = Vector3.zero;
         transform.localEulerAngles = Vector3.zero;
-        SetWeather(EWeather.Snow);
+        //SetWeather(EWeather.Snow);
+        StartCoroutine(GetWeather());
     }
 
     public void SetWeather(EWeather newWeather) {
