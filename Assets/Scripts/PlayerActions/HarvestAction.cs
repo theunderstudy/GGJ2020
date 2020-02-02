@@ -27,7 +27,7 @@ public class HarvestAction : PlayerAction
 
                     ObjectPool.Instance.WoodCount += WoodPerTree;
                     _newTile.MoveTileVerticallyOverTime(0, 0.2f);
-                    PlayerController.Instance.StartWork(_newTile.transform.position , 1f);
+                    PlayerController.Instance.StartWork(_newTile , 1f);
 
                 }
               

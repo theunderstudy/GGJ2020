@@ -90,7 +90,28 @@ public class PlayerController : Singleton<PlayerController>
     // Update is called once per frame
     void Update()
     {
+        if (continueRotate)
+        {
+            // Keep rotating!
 
+            if (currentEuler == rotationTarget)
+            {
+                // Update the current euler towards the rotation target
+                continueRotate = false;
+                // we may be in a state where currentEuler doesn't actually
+                // correspond to reality, since we're screwing with the rotation values above.
+                // So, we should reset the currentEuler to our expected rotation space.
+                currentEuler = absoluteTarget;
+            }
+            else
+            {
+                // Hardcoding rotational axis, for now
+
+                currentEuler = Vector3.RotateTowards(currentEuler, rotationTarget, 1, rotationSpeed);
+                transform.eulerAngles = currentEuler;
+
+            }
+        }
         if (bWorking)
         {
             return;
@@ -157,33 +178,11 @@ public class PlayerController : Singleton<PlayerController>
                 {
                     currentEuler.y += 360.0f;
                 }
-
                 continueRotate = true;
             }
         }
 
-        if (continueRotate)
-        {
-            // Keep rotating!
 
-            if (currentEuler == rotationTarget)
-            {
-                // Update the current euler towards the rotation target
-                continueRotate = false;
-                // we may be in a state where currentEuler doesn't actually
-                // correspond to reality, since we're screwing with the rotation values above.
-                // So, we should reset the currentEuler to our expected rotation space.
-                currentEuler = absoluteTarget;
-            }
-            else
-            {
-                // Hardcoding rotational axis, for now
-
-                currentEuler = Vector3.RotateTowards(currentEuler, rotationTarget, 1, rotationSpeed);
-                transform.eulerAngles = currentEuler;
-
-            }
-        }
     }
     private HashSet<KeyCode> setOf(KeyCode[] keys)
     {
@@ -228,7 +227,7 @@ public class PlayerController : Singleton<PlayerController>
             }
         }
     }
-    public void StartWork(Vector3 workTarget , float workTime)
+    public void StartWork(GridTile workTarget , float workTime)
     {
         if (bWorking)
         {
@@ -236,6 +235,61 @@ public class PlayerController : Singleton<PlayerController>
         }
         Energy -= 10;
         bWorking = true;
+
+        // Figure out where the work tile is in relation to the player tile
+        int direction = TileKey.GetDirectionIndex(CurrentTile.Key, workTarget.Key);
+        // Coerce the direction into wasd cardinal space
+        Debug.Log(direction);
+
+        //         rotationTargets.Add(setOf(new[] { KeyCode.W }), );
+        // rotationTargets.Add(setOf(new[] { KeyCode.A }), new Vector3(0f, 180f, 0f));
+        // rotationTargets.Add(setOf(new[] { KeyCode.S }), );
+        // rotationTargets.Add(setOf(new[] { KeyCode.D }), );
+
+        // // Pressing multiple keys at once
+
+        // // W+D should be 305f
+        // // S+D should be 45f
+        // // S+A should be 135f
+        // // W+A should be 215f
+
+        // rotationTargets.Add(setOf(new[] { KeyCode.S, KeyCode.A }), new Vector3(0f, 135f, 0f));
+        // rotationTargets.Add(setOf(new[] { KeyCode.W, KeyCode.A }), new Vector3(0f, 215f, 0f));
+
+        if (direction == 0) {
+            // w
+            rotationTarget = new Vector3(0f, 270f, 0f);
+        }
+        else if (direction == 1) {
+            //wd
+            rotationTarget = new Vector3(0f, 305f, 0f);
+        }
+        else if (direction == 2) {
+            //d
+            rotationTarget = new Vector3(0f, 0f, 0f);
+        }
+        else if (direction == 3) {
+
+            //ds
+            rotationTarget = new Vector3(0f, 45f, 0f);
+        }
+        else if (direction == 4) {
+            // s
+            rotationTarget = new Vector3(0f, 90f, 0f);
+        }
+        else if (direction == 5) {
+            //sa
+            rotationTarget = new Vector3(0f, 135f, 0f);
+        }
+        else if (direction == 6) {
+            // a
+            rotationTarget = new Vector3(0f, 180f, 0f);
+        }
+        else if (direction == 7) {
+            rotationTarget = new Vector3(0f, 215f, 0f);
+        }
+        continueRotate = true;
+
         StartCoroutine(WorkRoutine(workTime));
 
     }
