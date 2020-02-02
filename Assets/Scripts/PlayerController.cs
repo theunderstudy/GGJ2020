@@ -237,6 +237,7 @@ public class PlayerController : Singleton<PlayerController>
         Energy -= 10;
         bWorking = true;
         StartCoroutine(WorkRoutine(workTime));
+
     }
 
     IEnumerator WorkRoutine(float workTime)
