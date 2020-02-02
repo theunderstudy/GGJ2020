@@ -61,11 +61,4 @@ public class Subtitle_Manager : MonoBehaviour
         yield break;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            StartCoroutine(TestText());
-        }
-    }
 }

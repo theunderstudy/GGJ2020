@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(Rigidbody), typeof(BoxCollider), typeof(Animator))]
 public class PlayerController : Singleton<PlayerController>
@@ -22,10 +23,24 @@ public class PlayerController : Singleton<PlayerController>
     public Vector3 rotationTarget;
     private Vector3 absoluteTarget;
 
+    public int Energy = 100;
+    public int MaxEnergy = 100;
+
+    public bool bWorking = false;
+    public GameObject WorkParticles;
+
+    public GridTile CurrentTile;
+
+
+    protected override void Awake()
+    {
+        base.Awake();
+        UpdateCurrentTile();
+    }
     void Start()
     {
         // playerObject = GameObject.Find("PlayerTestObject");
-        ground = GameObject.Find("Ground");
+       
 
         currentEuler = defaultRotation;
 
@@ -71,13 +86,21 @@ public class PlayerController : Singleton<PlayerController>
     // Update is called once per frame
     void Update()
     {
+
+        if (bWorking)
+        {
+            return;
+        }
+
+        UpdateCurrentTile();
+
         HashSet<KeyCode> usedKeys = new HashSet<KeyCode>();
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        Debug.Log("Horizontal" + horizontal);
-        Debug.Log("Vertical" + vertical);
+        //Debug.Log("Horizontal" + horizontal);
+        //Debug.Log("Vertical" + vertical);
 
         // I don't feel good about this but it'll work
         // possibly?
@@ -171,5 +194,57 @@ public class PlayerController : Singleton<PlayerController>
             keyCodes.Add(k);
         }
         return keyCodes;
+    }
+
+    public void StartNewDay(EWeather weather)
+    {
+        Energy = MaxEnergy;
+    }
+
+    private void OnEnable()
+    {
+        DayNightManager.EndDayEvent += StartNewDay;
+    }
+    private void OnDisable()
+    {
+        DayNightManager.EndDayEvent -= StartNewDay;
+    }
+
+    public bool CanWork()
+    {
+        return Energy > 0;
+    }
+
+
+    private void UpdateCurrentTile()
+    {
+        GridTile _tile = GridManager.Instance.GetTile(transform.position);
+
+        if (_tile != null)
+        {
+            if (_tile != CurrentTile)
+            {
+                CurrentTile = _tile;
+                PlayerMouseinput.Instance.HighlightWorkableTiles();
+            }
+        }
+    }
+    public void StartWork(Vector3 workTarget , float workTime)
+    {
+        if (bWorking)
+        {
+            return;
+        }
+        Energy -= 10;
+        bWorking = true;
+        StartCoroutine(WorkRoutine(workTime));
+    }
+
+    IEnumerator WorkRoutine(float workTime)
+    {
+        WorkParticles.SetActive(true);
+        yield return new WaitForSeconds(workTime);
+        WorkParticles.SetActive(false);
+        bWorking = false;
     }
 }

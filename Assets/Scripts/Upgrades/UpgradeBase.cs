@@ -45,14 +45,18 @@ public abstract class UpgradeBase : MonoBehaviour
     }
     public abstract void ResetUpgrade();
 
-    public abstract void StartNewDay(EWeather newWeather);
+    public abstract void EndOfDay(EWeather newWeather);
 
+
+    public abstract void StartNewDay(EWeather newWeather);
     private void OnEnable()
     {
+        DayNightManager.EndDayEvent += EndOfDay;
         DayNightManager.NewDayEvent += StartNewDay;
     }
     private void OnDisable()
     {
+        DayNightManager.EndDayEvent -= EndOfDay;
         DayNightManager.NewDayEvent -= StartNewDay;
 
     }

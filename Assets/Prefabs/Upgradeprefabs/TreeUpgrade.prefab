@@ -48,9 +48,10 @@ MonoBehaviour:
   ParentTile: {fileID: 0}
   UpgradeModel: {fileID: 8898627366586496488}
   TurnsToGrow: 10
-  bWatered: 0
   StartPosition: {x: 0, y: 0.5, z: 0}
   EndPosition: {x: 0, y: 0, z: 0}
+  WateredColor: {r: 0.33940327, g: 0.6698113, b: 0.18009077, a: 1}
+  NotWateredColor: {r: 0.9443074, g: 1, b: 0.6084906, a: 1}
 --- !u!1 &3089635975793917261
 GameObject:
   m_ObjectHideFlags: 0

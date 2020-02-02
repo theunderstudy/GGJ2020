@@ -28,7 +28,7 @@ public class GrassUpgrade : UpgradeBase
         ParentTile.EnableRenderers();
     }
 
-    public override void StartNewDay(EWeather newWeather)
+    public override void EndOfDay(EWeather newWeather)
     {
         m_CurrentTurn += 1;
 
@@ -48,7 +48,17 @@ public class GrassUpgrade : UpgradeBase
     public override void WaterTile()
     {
         bWatered = true;
-
+        m_CurrentTurn = 0;
         // Change color of tile
+        Color _newColor = Color.Lerp(FreshGreenColor, ShitDirtColor, (float)m_CurrentTurn / TurnsTillDegrade);
+        for (int i = 0; i < m_UpgradeRenderers.Length; i++)
+        {
+            m_UpgradeRenderers[i].material.color = (_newColor);
+        }
+    }
+
+    public override void StartNewDay(EWeather newWeather)
+    {
+      
     }
 }

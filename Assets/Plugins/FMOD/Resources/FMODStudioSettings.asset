@@ -15,9 +15,9 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: D:\UnityProjects\GGJ\GGJ2020\Assets\Audio\GGJ2020_SoundDesign\GGJ2020_SoundDesign.fspro
-  SourceProjectPathUnformatted: Assets\Audio\GGJ2020_SoundDesign\GGJ2020_SoundDesign.fspro
-  SourceBankPathUnformatted: Assets\Audio\GGJ2020_SoundDesign\Build
+  sourceProjectPath: /Users/aurynn/src/games/GGJ2020/Assets/Audio/GGJ2020_SoundDesign/GGJ2020_SoundDesign.fspro
+  SourceProjectPathUnformatted: Assets/Audio/GGJ2020_SoundDesign/GGJ2020_SoundDesign.fspro
+  SourceBankPathUnformatted: Assets/Audio/GGJ2020_SoundDesign/Build
   AutomaticEventLoading: 1
   BankLoadType: 0
   AutomaticSampleLoading: 0
@@ -76,8 +76,7 @@ MonoBehaviour:
   - Platform: 20
     Value: 32
   Plugins: []
-  MasterBanks:
-  - Master
+  MasterBanks: []
   Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264

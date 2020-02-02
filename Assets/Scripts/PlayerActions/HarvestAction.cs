@@ -11,13 +11,25 @@ public class HarvestAction : PlayerAction
         GridTile _newTile = MouseInput.GetTileAtMousePosition();
         if (_newTile != null)
         {
+            if (!CanWorkTile(_newTile))
+            {
+                return;
+            }
             if (CanUpgrade(_newTile.UpgradeType))
             {
+                
+
                 TreeUpgrade _treeUpgrade = (TreeUpgrade)_newTile.Upgrade;
 
-                _newTile.UpgradeTile(UpgradeToPlace);
+                if (_treeUpgrade.Grown())
+                {
+                    _newTile.UpgradeTile(UpgradeToPlace);
 
-                ObjectPool.Instance.WoodCount += WoodPerTree;
+                    ObjectPool.Instance.WoodCount += WoodPerTree;
+                    _newTile.MoveTileVerticallyOverTime(0, 0.2f);
+                    PlayerController.Instance.StartWork(_newTile.transform.position , 1f);
+                }
+              
             }
         }
     }
@@ -34,7 +46,10 @@ public class HarvestAction : PlayerAction
             }
             return;
         }
-
+        if (!CanWorkTile(_newTile))
+        {
+            return;
+        }
         if (_newTile == m_SelectedTile)
         {
             return;
@@ -46,6 +61,7 @@ public class HarvestAction : PlayerAction
         }
 
         m_SelectedTile = _newTile;
+
 
         if (CanUpgrade(m_SelectedTile.UpgradeType))
         {

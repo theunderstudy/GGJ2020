@@ -17,6 +17,7 @@ public class BuildAction : PlayerAction
     {
         base.MouseDown();
         ObjectPool.Instance.WoodCount -= BuildingCost;
+
     }
 
     public override void MousePositionUpdated()

@@ -33,9 +33,17 @@ public class PlayerAction : MonoBehaviour
         GridTile _newTile = MouseInput.GetTileAtMousePosition();
         if (_newTile != null)
         {
+            if (!CanWorkTile(_newTile))
+            {
+                return;
+            }
+
             if (CanUpgrade(_newTile.UpgradeType))
             {
                 _newTile.UpgradeTile(UpgradeToPlace);
+
+                m_SelectedTile.MoveTileVerticallyOverTime(0, 0.2f);
+                PlayerController.Instance.StartWork(_newTile.transform.position, 1f);
             }
         }
     }
@@ -43,6 +51,8 @@ public class PlayerAction : MonoBehaviour
     public virtual void MousePositionUpdated()
     {
         GridTile _newTile = MouseInput.GetTileAtMousePosition();
+
+      
         if (_newTile == null)
         {
             if (m_SelectedTile != null)
@@ -52,7 +62,10 @@ public class PlayerAction : MonoBehaviour
             }
             return;
         }
-
+        if (!CanWorkTile(_newTile))
+        {
+            return;
+        }
         if (_newTile == m_SelectedTile)
         {
             return;
@@ -75,9 +88,9 @@ public class PlayerAction : MonoBehaviour
         }
     }
 
-    protected bool CanUpgrade(UpgradeTypes upgradeType)
+    public virtual bool CanUpgrade(UpgradeTypes upgradeType)
     {
-
+       
         for (int i = 0; i < AffectedTypes.Length; i++)
         {
             if (AffectedTypes[i] == upgradeType)
@@ -88,5 +101,27 @@ public class PlayerAction : MonoBehaviour
         return false;
     }
 
+
+    public bool CanWorkTile(GridTile _tile)
+    {
+        if (_tile == PlayerController.Instance.CurrentTile )
+        {
+            return true;    
+        }
+
+        if (_tile == null)
+        {
+            return false;
+        }
+        if (PlayerController.Instance.CurrentTile == null)
+        {
+            return false;
+        }
+        if (PlayerController.Instance.CurrentTile.AdjacentTiles.ContainsKey(_tile.Key))
+        {
+            return true;
+        }
+        return false;
+    }
 
 }
