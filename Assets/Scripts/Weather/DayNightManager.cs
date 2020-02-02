@@ -20,6 +20,7 @@ public class DayNightManager : Singleton<DayNightManager>
     {
         EWeather _currentWeather = EWeather.Clear;
         CurrentDay += 1;
+        Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "𝅘𝅥𝅮 fully charged beep 𝅘𝅥𝅮");
         NewDayEvent?.Invoke(_currentWeather);
     }
 }
