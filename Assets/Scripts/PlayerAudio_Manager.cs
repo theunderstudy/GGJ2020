@@ -9,14 +9,22 @@ public class PlayerAudio_Manager : Singleton<PlayerAudio_Manager>
     [EventRef]
     public List<string> botNoises = new List<string>();
 
-    public void BotChatter(string botsfx)
+    private void OnEnable()
     {
-        RuntimeManager.PlayOneShot(botNoises.Find(sfx => sfx.Contains(botsfx)), transform.position);
+
+        PlayerController.EnergyUpdatedEvent += BotChargeLevel;
     }
 
-    public void BotChargeLevel()
+    public void BotChatter(int botsfx)
     {
+        RuntimeManager.PlayOneShot(botNoises[botsfx], transform.position);
+    }
 
+    public void BotChargeLevel(float chargeLevel)
+    {
+        if (chargeLevel >= 1) BotChatter(3);
+        if (chargeLevel > 0.2 && chargeLevel <= 0.5) BotChatter(0);
+        if (chargeLevel <= 0.2) BotChatter(1);
 
     }
 

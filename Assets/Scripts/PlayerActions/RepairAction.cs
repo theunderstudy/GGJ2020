@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,13 +16,13 @@ public class RepairAction : PlayerAction
         if (_newTile != null)
         {
             _newTile.MoveTileVerticallyOverTime(0, 0.2f);
-            PlayerController.Instance.StartWork(_newTile.transform.position, 5f);
+           
             if (_newTile.Upgrade)
             {
                 WindmillUpgrade _windmill = (WindmillUpgrade)_newTile.Upgrade;
                 if (_windmill.bUpgraded == false)
                 {
-
+                    PlayerController.Instance.StartWork(_newTile, 5f);
 
                     _windmill.bUpgraded = true;
 
@@ -32,7 +32,6 @@ public class RepairAction : PlayerAction
                     WindMillFixedEvent?.Invoke();
                     Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "Lovely! The windmill is all shiny and new again. And look, you’ve cleared the dust clouds away from the nearby tiles.", 6);
                     WindMillFixedEvent();
-
                 }
             }
 
