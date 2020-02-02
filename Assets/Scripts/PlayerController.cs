@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using FMODUnity;
 
 [RequireComponent(typeof(Rigidbody), typeof(BoxCollider), typeof(Animator))]
 public class PlayerController : Singleton<PlayerController>
@@ -31,6 +32,9 @@ public class PlayerController : Singleton<PlayerController>
 
     public GridTile CurrentTile;
 
+    
+    [EventRef]
+    public string TreadFX;
 
     protected override void Awake()
     {
@@ -111,14 +115,17 @@ public class PlayerController : Singleton<PlayerController>
         {
             usedKeys.Add(KeyCode.D);
         }
+
         if (horizontal < 0 && horizontal >= -1)
         {
             usedKeys.Add(KeyCode.A);
         }
+
         if (vertical > 0 && vertical <= 1)
         {
             usedKeys.Add(KeyCode.W);
         }
+
         if (vertical < 0 && vertical >= -1)
         {
             usedKeys.Add(KeyCode.S);
@@ -129,16 +136,8 @@ public class PlayerController : Singleton<PlayerController>
             Vector3 direction;
             movement.TryGetValue(k, out direction);
             transform.Translate((direction * Time.deltaTime) * speed, ground.transform);
+            RuntimeManager.PlayOneShot(TreadFX, transform.position);
         }
-
-        // foreach (var k in movement) {
-        //     if (Input.GetKey(k.Key)) {
-        //         transform.Translate((k.Value * Time.deltaTime) * speed, ground.transform);
-        //         usedKeys.Add(k.Key);
-        //     }
-        // }
-        // Okay we have KEYS and A LOOKUP TABLE
-        // WOO
 
         if (usedKeys.Count > 0)
         {
