@@ -154,6 +154,10 @@ public class PlayerMouseinput : Singleton<PlayerMouseinput>
 
     public void SetPlayerAction(PlayerAction newAction)
     {
+        if (newAction == null)
+        {
+            return;
+        }
         CurrentPlayerAction = newAction;
         HighlightWorkableTiles();
     }
