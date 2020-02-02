@@ -35,12 +35,12 @@ public class PlayerController : Singleton<PlayerController>
     protected override void Awake()
     {
         base.Awake();
-        UpdateCurrentTile();
+      
     }
     void Start()
     {
         // playerObject = GameObject.Find("PlayerTestObject");
-       
+        UpdateCurrentTile();
 
         currentEuler = defaultRotation;
 

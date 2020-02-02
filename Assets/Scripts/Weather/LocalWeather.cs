@@ -10,10 +10,11 @@ public class LocalWeather : MonoBehaviour
 
     private void Start()
     {
-        // StartCoroutine(GetWeather());
+       // StartCoroutine(GetWeather());
         transform.parent= Camera.main.transform;
         transform.localPosition = Vector3.zero;
-        SetWeather(EWeather.Clouds);
+        transform.localEulerAngles = Vector3.zero;
+         SetWeather(EWeather.Snow);
     }
 
     private void SetWeather(EWeather newWeather) {
