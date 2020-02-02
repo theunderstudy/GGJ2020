@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{1c83cdff-7170-4bdc-9cb7-8bf6cc88f8a2}">
+		<property name="assetPath">
+			<value>Sea ripples - water along shore being rippled by wind &amp; tide.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>242.90666666666667</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7985d43a-1067-4e2a-9cdb-225315dbdb49}</destination>
+		</relationship>
+	</object>
+</objects>
