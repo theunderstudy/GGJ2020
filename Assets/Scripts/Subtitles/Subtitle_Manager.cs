@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Subtitle_Manager : MonoBehaviour
+public class Subtitle_Manager : Singleton<Subtitle_Manager>
 {
     private UI_Subtitle_Controller Subtitle_Controller { get { return FindObjectOfType<UI_Subtitle_Controller>(); } }
 
@@ -17,7 +18,9 @@ public class Subtitle_Manager : MonoBehaviour
     public delegate void ShowSubs(Color speakerColour, string name, string dialouge);
     public static event ShowSubs DisplaySubtitle;
 
-    private void Awake()
+    private List<Tuple<Color, string, string, int>> dialogueQueue = new List<Tuple<Color, string, string, int>>();
+
+    protected override void Awake()
     {
         SetStyle();
     }
@@ -40,25 +43,21 @@ public class Subtitle_Manager : MonoBehaviour
     /// <param name="speakerColor">The text colour of the speaker</param>
     /// <param name="name">The source of the dialouge</param>
     /// <param name="dialouge">The Dalouge</param>
-    public void SendDialouge(Color speakerColor, string name, string dialouge)
+    public void SendDialouge(Color speakerColor, string name, string dialouge, int displaySeconds = 3)
     {
-        DisplaySubtitle(speakerColor, name, dialouge);
+        this.dialogueQueue.Add(Tuple.Create(speakerColor, name, dialouge, displaySeconds));
+        if (dialogueQueue.Count == 1) StartCoroutine(ProcessQueuedDialouge());
     }
 
-    IEnumerator TestText()
+    IEnumerator ProcessQueuedDialouge()
     {
-        int count = 0;
-        foreach (string text in Test)
-        {
-            SendDialouge(speakerNameColor, "SubTut", Test[count]);
-            count++;
-            yield return new WaitForSecondsRealtime(5f);
-            if (count >= Test.Count)
-            {
-                yield break;
-            }
+        while (this.dialogueQueue.Count > 0) {
+            Debug.Log("ProcessQueuedDialouge");
+            Tuple<Color, string, string, int> nextDialogue = this.dialogueQueue[0];
+            DisplaySubtitle(nextDialogue.Item1, nextDialogue.Item2, nextDialogue.Item3);
+            this.dialogueQueue.RemoveAt(0);
+            yield return new WaitForSecondsRealtime((float) nextDialogue.Item4);
         }
-        yield break;
     }
 
 }

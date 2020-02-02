@@ -8,5 +8,6 @@ public class GoToBed : ImageButton
     {
         UIManager.Instance.ShowNewDayButton(false);
         GameManager.Instance.StartNightSequence();
+        Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "𝅘𝅥𝅮 charging robot noises 𝅘𝅥𝅮");
     }
 }
