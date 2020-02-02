@@ -22,6 +22,7 @@ public class Subtitle_Manager : Singleton<Subtitle_Manager>
 
     protected override void Awake()
     {
+        base.Awake();
         SetStyle();
     }
 
