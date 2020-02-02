@@ -159,7 +159,7 @@ public class PlayerController : Singleton<PlayerController>
             Vector3 direction;
             movement.TryGetValue(k, out direction);
             transform.Translate((direction * Time.deltaTime) * speed, ground.transform);
-            RuntimeManager.PlayOneShot(TreadFX, transform.position);
+           // RuntimeManager.PlayOneShot(TreadFX, transform.position);
         }
 
         if (usedKeys.Count > 0)

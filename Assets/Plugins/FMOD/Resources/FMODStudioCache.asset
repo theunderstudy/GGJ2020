@@ -1,5 +1,117 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8873455441949419943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/World/woodedtrees
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/World/woodedtrees
+  guid: 92706ce9ade7be4a9440b08b3c43001a
+  Banks:
+  - {fileID: 8377019738643392491}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 216213
+--- !u!114 &-8086990858183461801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: D:\UnityProjects\GGJ\GGJ2020\Assets\Audio\GGJ2020_SoundDesign\Build\Desktop\Master.strings.bank
+  SubDir: 
+  lastModified: 637162638914423438
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1452
+  Exists: 1
+--- !u!114 &-8078222525451108439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/World/birds
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/World/birds
+  guid: 540ac228a12f6a4c9bc9b8531181f8d0
+  Banks:
+  - {fileID: 8377019738643392491}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 216213
+--- !u!114 &-7608686153398194421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/World/thunder
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/World/thunder
+  guid: 6e4b212cd5ec724a8f4dff15c3c0cd2f
+  Banks:
+  - {fileID: 8377019738643392491}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 16009
+--- !u!114 &-7555477955569117436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/robotVoiceHooray
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/robotVoiceHooray
+  guid: 554baa72900bf04f805fd5a5cb8d728a
+  Banks:
+  - {fileID: 8377019738643392491}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 496
 --- !u!114 &-7190194582189857817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,6 +172,29 @@ MonoBehaviour:
   - Name: Desktop
     Value: 688
   Exists: 1
+--- !u!114 &-3062305612724965717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/robotVoiceOhNo
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/robotVoiceOhNo
+  guid: c4114a534f05644387d2f399f7e4dd64
+  Banks:
+  - {fileID: 8377019738643392491}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 914
 --- !u!114 &-2509914819613313574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +258,52 @@ MonoBehaviour:
   - Name: Desktop
     Value: 748
   Exists: 1
+--- !u!114 &-1195408289659817820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/World/robotNightCharging
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/World/robotNightCharging
+  guid: 0476830879135f40ac6ec86defcd9ef6
+  Banks:
+  - {fileID: 8377019738643392491}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6008
+--- !u!114 &-375856135496539965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/robotVoiceCharging
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/robotVoiceCharging
+  guid: b8069b35f3ba284593af716406472549
+  Banks:
+  - {fileID: 8377019738643392491}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 800
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,17 +317,77 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 5830984155778525764}
-  - {fileID: 2175847885225567389}
+  - {fileID: -8086990858183461801}
+  - {fileID: 8377019738643392491}
   EditorEvents:
-  - {fileID: -2509914819613313574}
+  - {fileID: -1195408289659817820}
+  - {fileID: 1034706340826135384}
+  - {fileID: 11330376098652950}
+  - {fileID: 7301626311103236515}
+  - {fileID: 3475806753755990519}
+  - {fileID: 5033423759667257826}
+  - {fileID: 8139628178120921828}
+  - {fileID: 4555401116685121546}
+  - {fileID: -8078222525451108439}
+  - {fileID: -7555477955569117436}
+  - {fileID: -7608686153398194421}
+  - {fileID: -8873455441949419943}
+  - {fileID: -375856135496539965}
+  - {fileID: -3062305612724965717}
+  - {fileID: 7683186853827233919}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 2175847885225567389}
+  - {fileID: 8377019738643392491}
   StringsBanks:
-  - {fileID: 5830984155778525764}
-  stringsBankWriteTime: 637162452160000000
+  - {fileID: -8086990858183461801}
+  stringsBankWriteTime: 637162638914423438
   cacheVersion: 3
+--- !u!114 &11330376098652950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/World/seashore
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/World/seashore
+  guid: 2b5c0ad511acef4190a09e8dcfda5d09
+  Banks:
+  - {fileID: 8377019738643392491}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 242906
+--- !u!114 &1034706340826135384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/robotVoiceLowBattery
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/robotVoiceLowBattery
+  guid: 0582bd15de22c541b6c92c34cf8b4aaa
+  Banks:
+  - {fileID: 8377019738643392491}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1300
 --- !u!114 &2163239511491591979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +468,75 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1000
   Exists: 1
+--- !u!114 &3475806753755990519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Background Music
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Background Music
+  guid: 36e03fb2a95dd5489361673ab6805dcc
+  Banks:
+  - {fileID: 8377019738643392491}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 76800
+--- !u!114 &4555401116685121546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/menuMouseover
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/menuMouseover
+  guid: 5310bf80d3d4af4b89a133637968791c
+  Banks:
+  - {fileID: 8377019738643392491}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
+--- !u!114 &5033423759667257826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/World/wind
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/World/wind
+  guid: 480e8986a051bd47978bd41fdce88452
+  Banks:
+  - {fileID: 8377019738643392491}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 243013
 --- !u!114 &5830984155778525764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,4 +599,93 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 1000
+  Exists: 1
+--- !u!114 &7301626311103236515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/World/heavy rain (david cage do not interact)
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/World/heavy rain (david cage do not interact)
+  guid: 32fe422806c8ef49a4cb10eb04d3385b
+  Banks:
+  - {fileID: 8377019738643392491}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 414723
+--- !u!114 &7683186853827233919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/menuMouseSelect
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/menuMouseSelect
+  guid: d55d04b29374da4598bc87086982e33a
+  Banks:
+  - {fileID: 8377019738643392491}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3500
+--- !u!114 &8139628178120921828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/playerRobotSteamEngine
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/playerRobotSteamEngine
+  guid: 516dcca0ba682c4684bd096df02d78e8
+  Banks:
+  - {fileID: 8377019738643392491}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 142132
+--- !u!114 &8377019738643392491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: D:\UnityProjects\GGJ\GGJ2020\Assets\Audio\GGJ2020_SoundDesign\Build\Desktop\Master.bank
+  SubDir: 
+  lastModified: 637162638913802932
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 20239872
   Exists: 1

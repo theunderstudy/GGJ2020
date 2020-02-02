@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpgradeType: 3
   ParentTile: {fileID: 0}
-  UpgradeModel: {fileID: 0}
+  UpgradeModel: {fileID: 6744760770397258482}
   StartPosition: {x: 0, y: 0.5, z: 0}
   EndPosition: {x: 0, y: 0, z: 0}
   WateredColor: {r: 0.33940327, g: 0.6698113, b: 0.18009077, a: 1}
@@ -209,6 +209,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de691dfc4f267f7428befc75c109cb1c, type: 3}
+--- !u!1 &6744760770397258482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7309463327552452509, guid: de691dfc4f267f7428befc75c109cb1c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4101189384555394415}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9094277284656630557 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5106808224407502450, guid: de691dfc4f267f7428befc75c109cb1c,

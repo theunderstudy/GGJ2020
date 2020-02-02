@@ -6,18 +6,12 @@ public class HomeArea : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
-        {
-            UIManager.Instance.ShowNewDayButton(true);
-        }
+        GameManager.Instance.StartNightSequence();
+        Subtitle_Manager.Instance.SendDialouge(Color.white, " ", "𝅘𝅥𝅮 charging robot noises 𝅘𝅥𝅮");
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
-        {
-            UIManager.Instance.ShowNewDayButton(false);
-        }
-
+       
     }
 }

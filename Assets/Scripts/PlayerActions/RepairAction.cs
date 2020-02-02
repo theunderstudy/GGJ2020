@@ -16,7 +16,11 @@ public class RepairAction : PlayerAction
         if (_newTile != null)
         {
             _newTile.MoveTileVerticallyOverTime(0, 0.2f);
-           
+
+            if (!CanUpgrade(_newTile.UpgradeType))
+            {
+                return;
+            }
             if (_newTile.Upgrade)
             {
                 WindmillUpgrade _windmill = (WindmillUpgrade)_newTile.Upgrade;

@@ -41,7 +41,10 @@ public class PlayerAction : MonoBehaviour
             if (CanUpgrade(_newTile.UpgradeType))
             {
                 _newTile.UpgradeTile(UpgradeToPlace);
-
+                if (m_SelectedTile == null)
+                {
+                    return;
+                }
                 m_SelectedTile.MoveTileVerticallyOverTime(0, 0.2f);
                 PlayerController.Instance.StartWork(_newTile, 1f);
 
